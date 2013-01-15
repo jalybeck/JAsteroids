@@ -1,0 +1,6 @@
+ti 08.01.2013 1h    Aiheenvalinta
+to 10.01.2013 2h    GIT opettelua, repositorion luonti ja ensimmäinen kommitti
+la 12.01.2013 1h    GIT repositorion testausta kansiorakenteiden luontia
+su 13.01.2013 1.5   Dokumentaation kirjoittamista
+ma 14.01.2013 1h    Dokumentaation päivittämistä sekä vienti repoon
+ti 15.01.2013 0.5h  Tuntikirjanpidon luonti sekä repon muokkausta ja viimeinen pushaus ennen ensimmäistä deadlineä
