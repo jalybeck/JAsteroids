@@ -9,6 +9,7 @@
       <string v="oracle.jdeveloper.model.PathsConfiguration/ApplicationLevelMavenPOMContentSet"/>
    </list>
    <list n="listOfChildren">
-      <hash><url n="URL" path="Peli/Peli.jpr"/></hash>
+      <hash><url n="URL" path="CebylFwk/CebylFwk.jpr"/></hash>
+      <hash><url n="URL" path="Peli/Game.jpr"/></hash>
    </list>
 </jws:workspace>
