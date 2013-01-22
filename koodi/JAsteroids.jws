@@ -10,6 +10,6 @@
    </list>
    <list n="listOfChildren">
       <hash><url n="URL" path="CebylFwk/CebylFwk.jpr"/></hash>
-      <hash><url n="URL" path="Peli/Game.jpr"/></hash>
+      <hash><url n="URL" path="Game/Game.jpr"/></hash>
    </list>
 </jws:workspace>
