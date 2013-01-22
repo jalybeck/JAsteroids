@@ -11,5 +11,5 @@ package fi.cebylfwk;
  * @version     %I%, %G%
  */
 public interface Renderable {
-    public void render();
+    public void render(long time);
 }

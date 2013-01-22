@@ -10,22 +10,6 @@ import org.junit.Test;
 public class Vector2DTest {
     public Vector2DTest() {
     }
-
-    @Before
-    public void setUp() throws Exception {
-    }
-
-    @After
-    public void tearDown() throws Exception {
-    }
-
-    @BeforeClass
-    public static void setUpBeforeClass() throws Exception {
-    }
-
-    @AfterClass
-    public static void tearDownAfterClass() throws Exception {
-    }
     
     @Test
     public void testDefaultConstructor() {
@@ -119,7 +103,12 @@ public class Vector2DTest {
     
     @Test
     public void testVectorNegation() {
-       assertTrue("Not implemented!",false);
+       Vector2D v = new Vector2D(-10.232,-11.241);
+       
+       v.negate();
+       
+       assertEquals("x != 10.232",10.232,v.x,0.001);
+       assertEquals("y != 11.241",11.241,v.y,0.001);
     }
     
     @Test

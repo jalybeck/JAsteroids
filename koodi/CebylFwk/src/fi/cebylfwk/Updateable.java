@@ -9,5 +9,5 @@ package fi.cebylfwk;
  * @version     %I%, %G%
  */
 public interface Updateable {
-    public void update();
+    public void update(long time);
 }

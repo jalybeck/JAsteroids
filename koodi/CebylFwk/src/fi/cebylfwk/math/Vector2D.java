@@ -71,4 +71,11 @@ public class Vector2D {
         
         return this;
     }
+
+    public Vector2D negate() {
+        this.x = -this.x;
+        this.y = -this.y;
+        
+        return this;
+    }
 }
