@@ -21,7 +21,11 @@ public class Vector2D {
         this.x = x;
         this.y = y;
     }
-    
+
+    private Vector2D(Vector2D vec) {
+        this(vec.x,vec.y);
+    }
+
     public Vector2D add(Vector2D v2) {
         this.x += v2.x;
         this.y += v2.y;
@@ -78,4 +82,38 @@ public class Vector2D {
         
         return this;
     }
+    
+    public Vector2D projection(Vector2D vec) {
+        Vector2D projVec = new Vector2D(0,0);
+        
+        Vector2D a = new Vector2D(this);
+        Vector2D b = new Vector2D(vec);
+        double divider = b.x * b.x + b.y * b.y;
+        if(divider == 0.0) {
+            return projVec;
+        }
+        double dotProd = a.dot(b);
+        double dotPerDiv = dotProd / divider;
+        projVec.x = dotPerDiv * b.x;
+        projVec.y = dotPerDiv * b.y;
+        
+        return projVec;
+    }
+    
+    /**
+     * Create unit length direction vector
+     *
+     * @param angle as degrees
+     * @return unit length direction vector on xy plane
+     */
+    public static Vector2D createDirectionVector(double angle) {
+        double radians = Math.toRadians(angle);
+        
+        double xComp =  Math.sin(radians);
+        double yComp =  Math.cos(radians);
+        
+        Vector2D dirVector = new Vector2D(xComp , yComp);
+        
+        return dirVector;
+    }    
 }

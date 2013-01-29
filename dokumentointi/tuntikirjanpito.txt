@@ -7,3 +7,5 @@ ti 15.01.2013 0.5h  Tuntikirjanpidon luonti sekä repon muokkausta ja viimeinen p
 la 19.01.2013 3.0h  Luokkadiagrammin suunnittelua, Interfacejen luomista
 su 20.01.2013 3.0h  Luokkadiagrammin suunnittelua, koodausta, testien tekoa
 ti 22.01.2013 4.0h  Yleisarkkitehtuurin läpikäyntiä. Testikeissien rakentamista. Ohjelmakoodin kirjoittamista. 
+ma 28.01.2013 3.0h  StateHandlerin rakentamista. Testausta.
+ti 29.01.2013 5.0h  Uuden korkeantason luokkadiagrammin tekeminen 2D pelikirjaston osalta. Pelikirjaston koodausta.

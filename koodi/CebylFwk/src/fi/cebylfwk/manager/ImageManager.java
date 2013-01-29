@@ -7,6 +7,7 @@ import fi.cebylfwk.graphics.Image;
 import java.io.IOException;
 
 import java.net.URL;
+
 /**
  * Manager for all the image files.
  * Getter methods can be added here later 
@@ -16,7 +17,7 @@ import java.net.URL;
  * @version     %I%, %G%
  */
 
-public class ImageManager extends ResourceManager {
+public class ImageManager extends ResourceManager<Image> {
     
     public ImageManager() {
         super();

@@ -4,9 +4,10 @@ import fi.cebylfwk.Resource;
 
 import java.io.IOException;
 
+
 import java.util.HashMap;
 import java.util.Iterator;
-import java.util.Map;
+import java.util.List;
 import java.util.logging.Logger;
 
 /**
@@ -16,16 +17,16 @@ import java.util.logging.Logger;
  * @version     %I%, %G%
  */
 
-public abstract class ResourceManager {
-    private HashMap<Object, Resource> resourceStore;
+public abstract class ResourceManager<T extends Resource> {
+    private HashMap<Object, T> resourceStore;
     private final Logger logger;
 
     protected ResourceManager() {
         logger = Logger.getLogger(this.getClass().getName());
-        resourceStore = new HashMap<Object, Resource>();
+        resourceStore = new HashMap<Object, T>();
     }
 
-    protected void setResource(Object resourceKey, Resource res) {
+    protected void setResource(Object resourceKey, T res) {
         logger.finest("Creating new resource! " + resourceKey);
         logger.finest("-" + res.toString());
         if (resourceStore.containsKey(resourceKey)) {
@@ -51,6 +52,10 @@ public abstract class ResourceManager {
             if (oldRes != null)
                 oldRes.release();
         }
+    }
+
+    protected List<T> getResourceList() {
+        return (List<T>)resourceStore.values();
     }
 
     public int getResourceCount() {
