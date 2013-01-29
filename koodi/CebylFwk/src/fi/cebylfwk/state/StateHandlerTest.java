@@ -14,7 +14,6 @@ import org.junit.Test;
 public class StateHandlerTest {
     StateHandler stateHandler;
     
-    
     //Mock classes for testing StateHandler
     private class IntroStateMock extends State {
 
@@ -95,14 +94,6 @@ public class StateHandlerTest {
         stateHandler = null;
     }
 
-    @BeforeClass
-    public static void setUpBeforeClass() throws Exception {
-    }
-
-    @AfterClass
-    public static void tearDownAfterClass() throws Exception {
-    }
-    
     @Test
     public void testAddState() throws ClassNotFoundException, NoSuchFieldException, IllegalAccessException {
 

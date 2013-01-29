@@ -38,8 +38,6 @@ public class StateHandler {
     }
     
     /**
-     * 
-     *
      * @return next active state. null if there are no more states.
      */
     public State getNextState() {
