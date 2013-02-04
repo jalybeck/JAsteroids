@@ -9,6 +9,7 @@ import java.net.URL;
 import java.nio.ByteBuffer;
 
 import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
 
 /**
  * Implementation of Image interface.
@@ -20,7 +21,7 @@ import javax.imageio.ImageIO;
  */
 public class GameImage implements Image {
     private URL url;
-    private java.awt.image.BufferedImage img;
+    private BufferedImage img;
     
     public GameImage(URL fileName) throws IOException {
         url = fileName;

@@ -1,5 +1,7 @@
 package fi.cebylfwk.state;
 
+import fi.cebylfwk.graphics.Renderer;
+
 import java.lang.reflect.Field;
 
 import java.util.LinkedList;
@@ -22,7 +24,7 @@ public class StateHandlerTest {
         }
 
         @Override
-        public void render(long time) {
+        public void render(Renderer r, long time) {
             throw new UnsupportedOperationException("For StateHandlerTest - do not implement!");
         }
 
@@ -33,6 +35,10 @@ public class StateHandlerTest {
                 this.finished = true;
             }
         }
+
+        @Override
+        public void processKeyboardInput() {
+        }
     }
     
     private class MainGameStateMock extends State {
@@ -42,7 +48,7 @@ public class StateHandlerTest {
         }
 
         @Override
-        public void render(long time) {
+        public void render(Renderer r, long time) {
             throw new UnsupportedOperationException("For StateHandlerTest - do not implement!");
         }
 
@@ -53,6 +59,10 @@ public class StateHandlerTest {
                 this.finished = true;
             }
         }
+
+        @Override
+        public void processKeyboardInput() {
+        }
     }
     
     private class GameOverStateMock extends State {
@@ -62,13 +72,17 @@ public class StateHandlerTest {
         }
 
         @Override
-        public void render(long time) {
+        public void render(Renderer r, long time) {
             throw new UnsupportedOperationException("For StateHandlerTest - do not implement!");
         }
 
         @Override
         public void update(long time) {
             throw new UnsupportedOperationException("For StateHandlerTest - do not implement!");
+        }
+
+        @Override
+        public void processKeyboardInput() {
         }
     }    
     

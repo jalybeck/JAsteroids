@@ -1,6 +1,7 @@
 package fi.cebylfwk.shape;
 
 import fi.cebylfwk.Renderable;
+import fi.cebylfwk.graphics.Image;
 import fi.cebylfwk.graphics.Texture;
 
 /**
@@ -14,13 +15,7 @@ import fi.cebylfwk.graphics.Texture;
  */
 public interface Shape2D extends Renderable {
     
-    public void setTexture(Texture t, boolean expandToTextureSize);
-    
-    /** 
-     * This method will bind the texture to current graphics context.
-     * For example opengl context.
-     */
-    public void bindTexture();
+    public void setImage(Image t, boolean expandToImageSize);
     
     /** Color should be 32-bit with 4 bytes (RGBA) */
     public void setColor(float r, float g, float b, float a);
@@ -33,4 +28,7 @@ public interface Shape2D extends Renderable {
     
     /** Scale object on xy plane */
     public void scale(float x, float y);
+    
+    /** Bounding object */
+    public Rectangle getBoundingRectangle();
 }

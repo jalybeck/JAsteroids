@@ -3,6 +3,7 @@ package fi.cebylfwk.state;
 import fi.cebylfwk.Renderable;
 import fi.cebylfwk.Updateable;
 import fi.cebylfwk.component.Entity;
+import fi.cebylfwk.graphics.Renderer;
 import fi.cebylfwk.manager.EntityManager;
 
 /**
@@ -39,8 +40,8 @@ public abstract class State implements Renderable, Updateable {
     }
 
     @Override
-    public void render(long time) {
-        em.render(time);
+    public void render(Renderer r, long time) {
+        em.render(r, time);
     }
 
     @Override
