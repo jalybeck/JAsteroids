@@ -5,7 +5,12 @@ import fi.cebylfwk.graphics.Renderer;
 
 import org.lwjgl.opengl.Display;
 import org.lwjgl.opengl.GL11;
-
+/**
+ * LWJGL implementation of Renderer interface.
+ *
+ * @author      Jari Lybeck
+ * @version     %I%, %G%
+ */
 public class RendererLWJGL implements Renderer {
     public RendererLWJGL() {
         super();
@@ -16,7 +21,7 @@ public class RendererLWJGL implements Renderer {
         GL11.glPushMatrix();
         
         //Put object back to upper corner
-        //TODO: Abstract away the Disay.getDisplayMode().getHeight()
+        //TODO: Abstract away the Display.getDisplayMode().getHeight()
         GL11.glTranslatef(0.0f + x,Display.getDisplayMode().getHeight() - y, 0.0f);
         
         // rotate square according to angle around z-axis

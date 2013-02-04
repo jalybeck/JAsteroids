@@ -1,8 +1,5 @@
 package fi.cebylfwk.graphics;
 
-import fi.cebylfwk.shape.Quad;
-import fi.cebylfwk.shape.Shape2D;
-
 /**
  * Interface for all the graphics rendering methods.
  *

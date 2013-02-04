@@ -4,7 +4,12 @@ import fi.cebylfwk.Renderable;
 import fi.cebylfwk.Updateable;
 import fi.cebylfwk.component.Entity;
 import fi.cebylfwk.graphics.Renderer;
-
+/**
+ * Manager which handles all the game entities.
+ *
+ * @author      Jari Lybeck
+ * @version     %I%, %G%
+ */
 public class EntityManager extends ResourceManager<Entity> implements Renderable, Updateable {
     public EntityManager() {
         super();

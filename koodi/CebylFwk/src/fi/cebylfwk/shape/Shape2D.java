@@ -2,7 +2,6 @@ package fi.cebylfwk.shape;
 
 import fi.cebylfwk.Renderable;
 import fi.cebylfwk.graphics.Image;
-import fi.cebylfwk.graphics.Texture;
 
 /**
  * This represents visible renderable shape in

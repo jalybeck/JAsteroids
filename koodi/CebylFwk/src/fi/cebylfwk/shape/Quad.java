@@ -3,9 +3,15 @@ package fi.cebylfwk.shape;
 import fi.cebylfwk.graphics.Color;
 import fi.cebylfwk.graphics.Image;
 import fi.cebylfwk.graphics.Renderer;
-import fi.cebylfwk.graphics.Texture;
 import fi.cebylfwk.math.Point2D;
 
+/**
+ * Base object which entities can use
+ * to visual quad shaped items.
+ * 
+ * @author      Jari Lybeck
+ * @version     %I%, %G%
+ */
 public class Quad implements Shape2D {
     private Image img;
     private float rotationAngle;

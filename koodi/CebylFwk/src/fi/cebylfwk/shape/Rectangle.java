@@ -1,8 +1,5 @@
 package fi.cebylfwk.shape;
 
-import fi.cebylfwk.Renderable;
-import fi.cebylfwk.graphics.Texture;
-
 /**
  * Rectangle object is used as bounding object
  * to check against shape collisions.
