@@ -9,20 +9,20 @@ package fi.cebylfwk.math;
  * @version     %I%, %G%
  */
 public class Vector2D {
-    double x,y;
+    private double x,y;
     
     public Vector2D() {
         x = 0;
         y = 0;
     }
 
-    Vector2D(double x, double y) {
+    public Vector2D(double x, double y) {
         this();
         this.x = x;
         this.y = y;
     }
 
-    private Vector2D(Vector2D vec) {
+    public Vector2D(Vector2D vec) {
         this(vec.x,vec.y);
     }
 
@@ -115,5 +115,13 @@ public class Vector2D {
         Vector2D dirVector = new Vector2D(xComp , yComp);
         
         return dirVector;
-    }    
+    }
+
+    public double getX() {
+        return x;
+    }
+
+    public double getY() {
+        return y;
+    }
 }

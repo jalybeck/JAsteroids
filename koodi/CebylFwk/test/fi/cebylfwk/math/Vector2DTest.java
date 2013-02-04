@@ -1,4 +1,6 @@
-package fi.cebylfwk.math;
+package test.fi.cebylfwk.math;
+
+import fi.cebylfwk.math.Vector2D;
 
 import org.junit.After;
 import org.junit.AfterClass;
@@ -29,8 +31,8 @@ public class Vector2DTest {
     public void testAssignmentConstructorWithPrimitiveValues() {
         Vector2D v = new Vector2D(1.0, 2.0);
 
-        assertEquals("x != 1.0", 1.0, v.x, 0.001);
-        assertEquals("y != 2.0", 2.0, v.y, 0.001);
+        assertEquals("x != 1.0", 1.0, v.getX(), 0.001);
+        assertEquals("y != 2.0", 2.0, v.getY(), 0.001);
     }
 
     @Test
@@ -39,13 +41,13 @@ public class Vector2DTest {
         Vector2D v2 = new Vector2D(-1.0, -2.0);
         v1.add(v2);
 
-        assertEquals("x != 0.0", 0.0, v1.x, 0.001);
-        assertEquals("y != 0.0", 0.0, v1.y, 0.001);
+        assertEquals("x != 0.0", 0.0, v1.getX(), 0.001);
+        assertEquals("y != 0.0", 0.0, v1.getY(), 0.001);
 
         v1.add(v2).add(new Vector2D(20.0, 10.0));
 
-        assertEquals("x != ", 19.0, v1.x, 0.001);
-        assertEquals("y != ", 8.0, v1.y, 0.001);
+        assertEquals("x != ", 19.0, v1.getX(), 0.001);
+        assertEquals("y != ", 8.0, v1.getY(), 0.001);
     }
 
     @Test
@@ -57,8 +59,8 @@ public class Vector2DTest {
 
         v1.sub(v2).sub(v3);
 
-        assertEquals("x != 40.0", 40.0, v1.x, 0.001);
-        assertEquals("y != 175.0", 175.0, v1.y, 0.001);
+        assertEquals("x != 40.0", 40.0, v1.getX(), 0.001);
+        assertEquals("y != 175.0", 175.0, v1.getY(), 0.001);
 
     }
 
@@ -68,8 +70,8 @@ public class Vector2DTest {
 
         v.mul(2.5);
 
-        assertEquals("x != 25.0", 25.0, v.x, 0.001);
-        assertEquals("y != 25.0", 25.0, v.y, 0.001);
+        assertEquals("x != 25.0", 25.0, v.getX(), 0.001);
+        assertEquals("y != 25.0", 25.0, v.getY(), 0.001);
     }
 
     @Test
@@ -107,8 +109,8 @@ public class Vector2DTest {
 
         v.negate();
 
-        assertEquals("x != 10.232", 10.232, v.x, 0.001);
-        assertEquals("y != 11.241", 11.241, v.y, 0.001);
+        assertEquals("x != 10.232", 10.232, v.getX(), 0.001);
+        assertEquals("y != 11.241", 11.241, v.getY(), 0.001);
     }
 
     @Test
@@ -119,20 +121,20 @@ public class Vector2DTest {
         Vector2D vecLeft = Vector2D.createDirectionVector(270);
 
         //Assert vecUp
-        assertEquals("vecUp.x != 0.0", 0.0, vecUp.x, 0.001);
-        assertEquals("vecUp.y != 1.0", 1.0, vecUp.y, 0.001);
+        assertEquals("vecUp.getX() != 0.0", 0.0, vecUp.getX(), 0.001);
+        assertEquals("vecUp.getY() != 1.0", 1.0, vecUp.getY(), 0.001);
 
         //Assert vecRight
-        assertEquals("vecRight.x != 1.0", 1.0, vecRight.x, 0.001);
-        assertEquals("vecRight.y != 0.0", 0.0, vecRight.y, 0.001);
+        assertEquals("vecRight.getX() != 1.0", 1.0, vecRight.getX(), 0.001);
+        assertEquals("vecRight.getY() != 0.0", 0.0, vecRight.getY(), 0.001);
         
         //Assert vecDown
-        assertEquals("vecDown.x !=  0.0", 0.0, vecDown.x, 0.001);
-        assertEquals("vecDown.y != -1.0", -1.0, vecDown.y, 0.001);
+        assertEquals("vecDown.getX() !=  0.0", 0.0, vecDown.getX(), 0.001);
+        assertEquals("vecDown.getY() != -1.0", -1.0, vecDown.getY(), 0.001);
         
         //Assert vecDown
-        assertEquals("vecLeft.x != -1.0", -1.0, vecLeft.x, 0.001);
-        assertEquals("vecLeft.y !=  0.0", 0.0, vecLeft.y, 0.001);        
+        assertEquals("vecLeft.getX() != -1.0", -1.0, vecLeft.getX(), 0.001);
+        assertEquals("vecLeft.getY() !=  0.0", 0.0, vecLeft.getY(), 0.001);        
     }
 
     @Test
@@ -143,8 +145,8 @@ public class Vector2DTest {
         //Projection of vec1 on vec2 should be vec2 in this situation.
         Vector2D vecProj = vec1.projection(vec2);
 
-        assertEquals("x component of projection vector is not vec2.x(1.0)!", vec2.x, vecProj.x, 0.001);
-        assertEquals("y component of projection vector is not vec2.y(0.0)!", vec2.y, vecProj.y, 0.001);
+        assertEquals("x component of projection vector is not vec2.getX()(1.0)!", vec2.getX(), vecProj.getX(), 0.001);
+        assertEquals("y component of projection vector is not vec2.getY()(0.0)!", vec2.getY(), vecProj.getY(), 0.001);
 
         vec1 = new Vector2D(-1.0, -1.0);
         vec2 = new Vector2D(-1.0, 0.0);
@@ -152,8 +154,8 @@ public class Vector2DTest {
         //Projection of vec1 on vec2 should be vec2 in this situation.
         vecProj = vec1.projection(vec2);
 
-        assertEquals("x component of projection vector is not vec2.x(-1.0)!", vec2.x, vecProj.x, 0.001);
-        assertEquals("y component of projection vector is not vec2.y(0.0)!", vec2.y, vecProj.y, 0.001);
+        assertEquals("x component of projection vector is not vec2.getX()(-1.0)!", vec2.getX(), vecProj.getX(), 0.001);
+        assertEquals("y component of projection vector is not vec2.getY()(0.0)!", vec2.getY(), vecProj.getY(), 0.001);
 
     }
 

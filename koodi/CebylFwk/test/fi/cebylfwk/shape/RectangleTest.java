@@ -1,4 +1,6 @@
-package fi.cebylfwk.shape;
+package test.fi.cebylfwk.shape;
+
+import fi.cebylfwk.shape.Rectangle;
 
 import org.junit.After;
 import static org.junit.Assert.*;

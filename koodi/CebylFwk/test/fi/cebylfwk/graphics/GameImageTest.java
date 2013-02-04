@@ -1,4 +1,6 @@
-package fi.cebylfwk.graphics;
+package test.fi.cebylfwk.graphics;
+
+import fi.cebylfwk.graphics.GameImage;
 
 import java.awt.Color;
 import java.awt.image.BufferedImage;

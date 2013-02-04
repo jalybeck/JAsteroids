@@ -1,6 +1,9 @@
-package fi.cebylfwk.manager;
+package test.fi.cebylfwk.manager;
 
 import fi.cebylfwk.Resource;
+
+import fi.cebylfwk.component.Entity;
+import fi.cebylfwk.manager.ResourceManager;
 
 import java.io.IOException;
 
@@ -15,10 +18,23 @@ public class ResourceManagerTest {
     public ResourceManagerTest() {
     }
     
-    private class ResourceManagerMock extends ResourceManager {
+    private class ResourceManagerMock extends ResourceManager<ResourceMock> {
         public ResourceManagerMock() {
             super();
         }
+        
+        public void setResource(Object key, ResourceMock res) {
+            super.setResource(key, res);
+        }
+        
+        public Resource getResource(Object resourceKey) throws IOException {
+            return super.getResource(resourceKey);
+        }
+        
+        public void removeResource(Object resourceKey) {
+            super.removeResource(resourceKey);
+        }        
+        
     }
     
     private class ResourceMock implements Resource {
@@ -42,7 +58,7 @@ public class ResourceManagerTest {
         }
     }
     
-    private ResourceManager mgr;
+    private ResourceManagerMock mgr;
     private final String res1Key = "Kuva1";
     private final String res2Key = "Ääni2";
     

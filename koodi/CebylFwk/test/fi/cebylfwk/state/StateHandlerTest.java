@@ -1,6 +1,9 @@
-package fi.cebylfwk.state;
+package test.fi.cebylfwk.state;
 
 import fi.cebylfwk.graphics.Renderer;
+
+import fi.cebylfwk.state.State;
+import fi.cebylfwk.state.StateHandler;
 
 import java.lang.reflect.Field;
 
