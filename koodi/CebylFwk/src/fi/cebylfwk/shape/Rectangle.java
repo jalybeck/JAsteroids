@@ -3,12 +3,12 @@ package fi.cebylfwk.shape;
 /**
  * Rectangle object is used as bounding object
  * to check against shape collisions.
- * 
+ *
  * @author      Jari Lybeck
  * @version     %I%, %G%
  */
 
-public class Rectangle {
+public class Rectangle implements BoundingObject<Rectangle> {
     private float top,bottom;
     private float right,left;
     private float xPos, yPos;
@@ -19,6 +19,7 @@ public class Rectangle {
         this.setBoundaries(xPos, yPos, width, height);
     }
     
+    @Override
     public boolean intersects(Rectangle rect1) {
         Rectangle rect2 = this;
         
@@ -53,6 +54,11 @@ public class Rectangle {
         sb.append("Right: ").append(this.right).append("\n");
         
         return sb.toString();
+    }
+
+    @Override
+    public Rectangle getBoundingObject() {
+        return this;
     }
 }
 
