@@ -19,19 +19,19 @@ public class Color {
         this.a = a;
     }
 
-    public float getR() {
+    public float getRed() {
         return r;
     }
 
-    public float getG() {
+    public float getGreen() {
         return g;
     }
 
-    public float getB() {
+    public float getBlue() {
         return b;
     }
 
-    public float getA() {
+    public float getAlpha() {
         return a;
     }
 }

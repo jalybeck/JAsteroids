@@ -72,30 +72,12 @@ public class GameImage implements Image {
                 return ColorFormat.BYTE_BGR;
             case java.awt.image.BufferedImage.TYPE_4BYTE_ABGR:
                 return ColorFormat.BYTE_ABGR;
-            case java.awt.image.BufferedImage.TYPE_4BYTE_ABGR_PRE:
-                return ColorFormat.NOT_SUPPORTED;
-            case java.awt.image.BufferedImage.TYPE_BYTE_BINARY:
-                return ColorFormat.NOT_SUPPORTED;
-            case java.awt.image.BufferedImage.TYPE_BYTE_GRAY:
-                return ColorFormat.NOT_SUPPORTED;
-            case java.awt.image.BufferedImage.TYPE_BYTE_INDEXED:
-                return ColorFormat.NOT_SUPPORTED;
-            case java.awt.image.BufferedImage.TYPE_CUSTOM:
-                return ColorFormat.NOT_SUPPORTED;
             case java.awt.image.BufferedImage.TYPE_INT_ARGB:
                 return ColorFormat.INT_ARGB;
-            case java.awt.image.BufferedImage.TYPE_INT_ARGB_PRE:
-                return ColorFormat.NOT_SUPPORTED;
             case java.awt.image.BufferedImage.TYPE_INT_BGR:
                 return ColorFormat.INT_BGR;
             case java.awt.image.BufferedImage.TYPE_INT_RGB:
                 return ColorFormat.INT_RGB;
-            case java.awt.image.BufferedImage.TYPE_USHORT_555_RGB:
-                return ColorFormat.NOT_SUPPORTED;
-            case java.awt.image.BufferedImage.TYPE_USHORT_565_RGB:
-                return ColorFormat.NOT_SUPPORTED;
-            case java.awt.image.BufferedImage.TYPE_USHORT_GRAY:
-                return ColorFormat.NOT_SUPPORTED;
             default:
                 return ColorFormat.NOT_SUPPORTED;
         }

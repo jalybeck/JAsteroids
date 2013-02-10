@@ -59,19 +59,19 @@ public abstract class ResourceManager<T extends Resource> {
     }
 
     public int getResourceCount() {
-        return this.resourceStore.size();
+        return resourceStore.size();
     }
 
     public void clear() {
-        if (this.resourceStore != null && !this.resourceStore.isEmpty()) {
-            while(!this.resourceStore.isEmpty()) {
-                Iterator it = this.resourceStore.keySet().iterator();
+        if (resourceStore != null && !resourceStore.isEmpty()) {
+            while(!resourceStore.isEmpty()) {
+                Iterator it = resourceStore.keySet().iterator();
                 if (it.hasNext()) {
                     String key = (String)it.next();
-                    this.removeResource(key);
+                    removeResource(key);
                 }
             }
-            this.resourceStore.clear();
+            resourceStore.clear();
         }
     }
 
