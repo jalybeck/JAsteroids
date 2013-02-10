@@ -10,6 +10,7 @@ import org.lwjgl.input.Keyboard;
 import org.lwjgl.opengl.Display;
 import org.lwjgl.opengl.DisplayMode;
 import org.lwjgl.opengl.GL11;
+import org.lwjgl.opengl.GL12;
 
 /**
  * Manual tests for testing renderer methods.
@@ -70,9 +71,9 @@ public class RendererLWJGLTest {
                         Display.getDisplayMode().getHeight());
 
         
-        //Enable texture mapping
+        //Set opengl states
         GL11.glEnable(GL11.GL_TEXTURE_2D);
-
+        
 
     }
     
@@ -85,7 +86,7 @@ public class RendererLWJGLTest {
         RendererLWJGL rend = new RendererLWJGL();
         final String testDataPath="testdata/";
         GameImage image = new GameImage(new URL(t.getClass().getResource(testDataPath) + "red16x16.png"));
-        GameImage fullScreenImage = new GameImage(new URL(t.getClass().getResource(testDataPath) + "uvtestmap.jpg"));
+        GameImage fullScreenImage = new GameImage(new URL(t.getClass().getResource(testDataPath) + "uvtestmap.png"));
         
         
         t.setDisplayMode(640,480,32);

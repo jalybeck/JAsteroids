@@ -8,6 +8,7 @@ import java.util.HashMap;
 import org.lwjgl.LWJGLException;
 import org.lwjgl.opengl.Display;
 import org.lwjgl.opengl.DisplayMode;
+import org.lwjgl.opengl.EXTAbgr;
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL12;
 
@@ -57,24 +58,54 @@ public class RendererLWJGL implements Renderer {
           
             GL11.glBindTexture(GL11.GL_TEXTURE_2D, textureID);
             
-            GL11.glTexParameteri(GL11.GL_TEXTURE_2D, GL11.GL_TEXTURE_WRAP_S, GL12.GL_CLAMP_TO_EDGE);
-            GL11.glTexParameteri(GL11.GL_TEXTURE_2D, GL11.GL_TEXTURE_WRAP_T, GL12.GL_CLAMP_TO_EDGE);
-            GL11.glTexParameteri(GL11.GL_TEXTURE_2D, GL11.GL_TEXTURE_MIN_FILTER, GL11.GL_NEAREST);
-            GL11.glTexParameteri(GL11.GL_TEXTURE_2D, GL11.GL_TEXTURE_MAG_FILTER, GL11.GL_NEAREST);
-            System.out.println(img.getColorFormat());
-            int glColFormat;
-            switch(img.getColorFormat()) {
-                case BYTE_ABGR:
-                    glColFormat = GL11.GL_RGBA;
-                    break;
-                case BYTE_BGR:
-                    glColFormat = GL11.GL_RGB;
-                    break;
-                default:
-                    glColFormat = GL11.GL_RGBA;
-            }
-            
-            GL11.glTexImage2D(GL11.GL_TEXTURE_2D, 0, GL11.GL_RGB8, img.getWidth(), img.getHeight(), 0, glColFormat, GL11.GL_UNSIGNED_BYTE, img.getResourceData());
+           // Linear Filtering
+           GL11.glTexParameteri(GL11.GL_TEXTURE_2D, 
+                                GL11.GL_TEXTURE_MIN_FILTER,
+                                GL11.GL_LINEAR);
+           GL11.glTexParameteri(GL11.GL_TEXTURE_2D, 
+                                GL11.GL_TEXTURE_MAG_FILTER,
+                                GL11.GL_LINEAR);
+           
+           GL11.glTexParameteri(GL11.GL_TEXTURE_2D, 
+                                GL11.GL_TEXTURE_WRAP_S,
+                                GL12.GL_CLAMP_TO_EDGE);
+           GL11.glTexParameteri(GL11.GL_TEXTURE_2D, 
+                                GL11.GL_TEXTURE_WRAP_T,
+                                GL12.GL_CLAMP_TO_EDGE);
+           
+           int internalTextureformat = GL11.GL_RGBA;
+           int textureFormat = GL12.GL_BGR;
+           int texturePixelData = GL11.GL_UNSIGNED_BYTE;
+           
+           switch(img.getColorFormat()) {
+               case BYTE_BGR:
+                   textureFormat = GL12.GL_BGR;
+                   texturePixelData = GL11.GL_UNSIGNED_BYTE;
+                   break;
+               case BYTE_ABGR:
+                   textureFormat = EXTAbgr.GL_ABGR_EXT;
+                   texturePixelData = GL11.GL_UNSIGNED_BYTE;
+                   break;
+               case INT_BGR:
+                   textureFormat = GL12.GL_BGR;
+                   texturePixelData = GL11.GL_UNSIGNED_INT;
+                   break;
+               case INT_ARGB:
+                   textureFormat = GL12.GL_BGRA;
+                   texturePixelData = GL11.GL_UNSIGNED_INT;
+                   break;
+           }
+           
+           // Load texture to OpenGL side
+           GL11.glTexImage2D(GL11.GL_TEXTURE_2D,
+                             0,
+                             internalTextureformat,
+                             img.getWidth(),
+                             img.getHeight(),
+                             0,
+                             textureFormat,
+                             texturePixelData,
+                             img.getResourceData());    
             
             this.textureCache.put(img,textureID);   
         }        
