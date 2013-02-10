@@ -7,6 +7,16 @@ package fi.cebylfwk.graphics;
  * @version     %I%, %G%
  */
 public interface Renderer {
+    
+    /**
+     * Initializes renderer with given resolution parameters.
+     *
+     * @param resX
+     * @param resY
+     * @param bpp bits per pixel
+     */
+    public void initialize(int resX, int resY, int bpp, boolean fullScreen, boolean vSync) throws Exception;
+    
     /**
      * Draws image on 2D screen.
      *

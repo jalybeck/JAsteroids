@@ -143,7 +143,7 @@ public class Vector2DTest {
         Vector2D vec2 = new Vector2D(1.0, 0.0);
 
         //Projection of vec1 on vec2 should be vec2 in this situation.
-        Vector2D vecProj = vec1.projection(vec2);
+        Vector2D vecProj = vec1.createProjectionVector(vec2);
 
         assertEquals("x component of projection vector is not vec2.getX()(1.0)!", vec2.getX(), vecProj.getX(), 0.001);
         assertEquals("y component of projection vector is not vec2.getY()(0.0)!", vec2.getY(), vecProj.getY(), 0.001);
@@ -152,7 +152,7 @@ public class Vector2DTest {
         vec2 = new Vector2D(-1.0, 0.0);
 
         //Projection of vec1 on vec2 should be vec2 in this situation.
-        vecProj = vec1.projection(vec2);
+        vecProj = vec1.createProjectionVector(vec2);
 
         assertEquals("x component of projection vector is not vec2.getX()(-1.0)!", vec2.getX(), vecProj.getX(), 0.001);
         assertEquals("y component of projection vector is not vec2.getY()(0.0)!", vec2.getY(), vecProj.getY(), 0.001);

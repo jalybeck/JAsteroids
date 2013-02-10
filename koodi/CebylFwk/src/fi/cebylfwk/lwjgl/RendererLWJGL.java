@@ -25,6 +25,63 @@ public class RendererLWJGL implements Renderer {
         super();
         this.textureCache = new HashMap<Image,Integer>();
     }
+    
+    private DisplayMode queryDisplayMode(int width, int height, int bpp) throws Exception {
+        DisplayMode mode = null;
+
+        try {
+            DisplayMode[] modes = Display.getAvailableDisplayModes();
+
+            for (int i = 0; i < modes.length; i++) {
+                if ((modes[i].getWidth() == width) &&
+                    (modes[i].getHeight() == height)) {
+                    mode = modes[i];
+                    break;
+                }
+            }
+        } catch (LWJGLException e) {
+            throw new Exception(e);
+        }
+
+        if (mode == null) {
+            throw new Exception("Unable to set screen resolution to: " +
+                                width + "x" + height + "x" + bpp);
+        }
+
+        return mode;        
+    }    
+    @Override
+    public void initialize(int resX, int resY, int bpp, boolean fullScreen, boolean vSync) throws Exception {
+        DisplayMode mode = queryDisplayMode(resX,resY,bpp);
+        
+        Display.setDisplayMode(mode);
+
+        // Create a fullscreen window with 1:1 orthographic 2D projection (default)
+        Display.setTitle("Default");
+        Display.setFullscreen(fullScreen);
+
+        // Enable vsync if we can (due to how OpenGL works, it cannot be guarenteed to always work)
+        Display.setVSyncEnabled(vSync);
+
+        // Create default display of 640x480
+        Display.create();
+
+        // Put the window into orthographic projection mode with 1:1 pixel ratio.
+        GL11.glMatrixMode(GL11.GL_PROJECTION);
+        GL11.glLoadIdentity();
+        GL11.glOrtho(0.0, Display.getDisplayMode().getWidth(), 0.0,
+                     Display.getDisplayMode().getHeight(), -1.0, 1.0);
+        GL11.glMatrixMode(GL11.GL_MODELVIEW);
+        GL11.glLoadIdentity();
+        GL11.glViewport(0, 0, Display.getDisplayMode().getWidth(),
+                        Display.getDisplayMode().getHeight());
+
+        
+        //Set opengl states
+        GL11.glEnable(GL11.GL_TEXTURE_2D);  
+        
+        
+    }    
 
     @Override
     public void drawImage(float x, float y, float xScale, float yScale, float rotAngle, Image img) {
@@ -201,6 +258,4 @@ public class RendererLWJGL implements Renderer {
     public void clear(float r, float g, float b) {
         this.clear(r,g,b,1.0f);
     }
-
- 
 }

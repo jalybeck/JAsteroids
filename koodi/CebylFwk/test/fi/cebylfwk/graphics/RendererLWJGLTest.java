@@ -20,63 +20,6 @@ public class RendererLWJGLTest {
         super();
     }
     
-    public DisplayMode queryDisplayMode(int width, int height, int bpp) throws Exception {
-        DisplayMode mode = null;
-
-        try {
-            DisplayMode[] modes = Display.getAvailableDisplayModes();
-
-            for (int i = 0; i < modes.length; i++) {
-                if ((modes[i].getWidth() == width) &&
-                    (modes[i].getHeight() == height)) {
-                    mode = modes[i];
-                    break;
-                }
-            }
-        } catch (LWJGLException e) {
-            throw new Exception(e);
-        }
-
-        if (mode == null) {
-            throw new Exception("Unable to set screen resolution to: " +
-                                width + "x" + height + "x" + bpp);
-        }
-
-        return mode;        
-    }
-    
-    public void setDisplayMode(int width, int height, int bpp) throws LWJGLException, Exception {
-        DisplayMode mode = queryDisplayMode(width,height,bpp);
-        
-        Display.setDisplayMode(mode);
-
-        // Create a fullscreen window with 1:1 orthographic 2D projection (default)
-        Display.setTitle("RendererLWJGLTest");
-        Display.setFullscreen(false);
-
-        // Enable vsync if we can (due to how OpenGL works, it cannot be guarenteed to always work)
-        Display.setVSyncEnabled(true);
-
-        // Create default display of 640x480
-        Display.create();
-
-        // Put the window into orthographic projection mode with 1:1 pixel ratio.
-        GL11.glMatrixMode(GL11.GL_PROJECTION);
-        GL11.glLoadIdentity();
-        GL11.glOrtho(0.0, Display.getDisplayMode().getWidth(), 0.0,
-                     Display.getDisplayMode().getHeight(), -1.0, 1.0);
-        GL11.glMatrixMode(GL11.GL_MODELVIEW);
-        GL11.glLoadIdentity();
-        GL11.glViewport(0, 0, Display.getDisplayMode().getWidth(),
-                        Display.getDisplayMode().getHeight());
-
-        
-        //Set opengl states
-        GL11.glEnable(GL11.GL_TEXTURE_2D);
-        
-
-    }
-    
     public void release() {
         Display.destroy();
     }
@@ -89,7 +32,8 @@ public class RendererLWJGLTest {
         GameImage fullScreenImage = new GameImage(new URL(t.getClass().getResource(testDataPath) + "uvtestmap.png"));
         
         
-        t.setDisplayMode(640,480,32);
+        rend.initialize(1280,720,32,false,true);
+
         int rot=0;
         boolean finished = false;
         while(!finished) {

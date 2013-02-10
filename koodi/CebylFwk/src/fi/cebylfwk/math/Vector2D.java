@@ -83,7 +83,7 @@ public class Vector2D {
         return this;
     }
     
-    public Vector2D projection(Vector2D vec) {
+    public Vector2D createProjectionVector(Vector2D vec) {
         Vector2D projVec = new Vector2D(0,0);
         
         Vector2D a = new Vector2D(this);
