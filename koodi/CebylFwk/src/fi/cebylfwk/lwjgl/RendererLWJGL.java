@@ -20,7 +20,7 @@ import org.lwjgl.opengl.GL12;
  */
 public class RendererLWJGL implements Renderer {
     private HashMap<Image,Integer> textureCache;
-    private static float testx, testy;
+
     public RendererLWJGL() {
         super();
         this.textureCache = new HashMap<Image,Integer>();
