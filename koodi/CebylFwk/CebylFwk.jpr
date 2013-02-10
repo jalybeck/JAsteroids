@@ -82,7 +82,7 @@
          </hash>
          <hash n="LWJGL 2.8.3">
             <value n="custom" v="false"/>
-            <value n="javaOptions" v="-Djava.library.path=C:\Users\jari.lybeck\Documents\GitHub\koodi\lib\lwjgl-2.8.3\native\windows"/>
+            <value n="javaOptions" v="-Djava.library.path=..\lib\lwjgl-2.8.3\native\windows"/>
             <value n="name" v="LWJGL 2.8.3"/>
          </hash>
       </hash>
