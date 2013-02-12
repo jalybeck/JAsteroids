@@ -11,4 +11,6 @@ ma 28.01.2013 3.0h  StateHandlerin rakentamista. Testausta.
 ti 29.01.2013 5.0h  Uuden korkeantason luokkadiagrammin tekeminen 2D pelikirjaston osalta. Pelikirjaston koodausta.
 ma 04.02.2013 3.5h  Pelikirjaston koodausta. Sekvenssikaavioiden suunnittelua.
 ti 05.02.2013 4.5h  Sekvenssikaavioiden suunnittelua. Pelikirjaston hienoista refaktorointia sekä konkreettisten luokkien tekemistä.
-test
+pe 08.02.2013 2.5h  Pelimoottorin koodausta.
+su 10.02.2013 3.5h  JAsteroids pelin koodaamista Pelimoottori koodin refaktorointia.
+ma 11.02.2013 5.0h  JAsteroids pelin koodaamista, luokkakaavion päivittämistä, sekvenssi kaavion päivittämistä, JavaDocien päivittämistä.  
