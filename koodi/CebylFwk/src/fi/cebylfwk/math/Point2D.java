@@ -22,7 +22,12 @@ public class Point2D {
         x = 0;
         y = 0;
     }
-
+    
+    public void set(Point2D point) {
+        this.x = point.getX();
+        this.y = point.getY();
+    }
+    
     public void setX(double x) {
         this.x = x;
     }

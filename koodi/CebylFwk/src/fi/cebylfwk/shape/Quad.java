@@ -73,8 +73,7 @@ public class Quad implements Shape2D {
 
     @Override
     public void render(Renderer r,long time) {
-        //TODO: Implement this
-        throw new RuntimeException("Not implemented!");
+        r.drawImage((float)pos.getX(), (float)pos.getY(),rotationAngle,this.img);
     }
 
     @Override

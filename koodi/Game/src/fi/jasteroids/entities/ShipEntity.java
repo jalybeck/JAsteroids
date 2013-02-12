@@ -7,6 +7,7 @@ import fi.cebylfwk.graphics.Image;
 import fi.cebylfwk.graphics.Renderer;
 import fi.cebylfwk.math.Point2D;
 import fi.cebylfwk.math.Vector2D;
+import fi.cebylfwk.shape.Quad;
 import fi.cebylfwk.shape.Shape2D;
 
 import java.io.IOException;
@@ -14,6 +15,8 @@ import java.io.IOException;
 import java.net.URL;
 
 import java.nio.ByteBuffer;
+
+import org.lwjgl.opengl.Display;
 
 /**
  * ShipEntity is player controllable ship.
@@ -23,7 +26,7 @@ import java.nio.ByteBuffer;
  * @see         Entity, UserControllable
  */
 
-public class ShipEntity implements Entity, UserControllable {
+public class ShipEntity extends BoundaryCheckedEntity implements  UserControllable {
     private final float thrust = 0.5f;
     private final float decay  = 0.99f;
     private final float maxSpeed = 7f;
@@ -32,7 +35,8 @@ public class ShipEntity implements Entity, UserControllable {
     private String name;
     private boolean active;
     private boolean visible;
-    private Image img;
+    //private Image img;
+    private Quad shape;
     private Point2D position;
     private float rotation;
     private Vector2D curSpeed;
@@ -41,7 +45,9 @@ public class ShipEntity implements Entity, UserControllable {
     public ShipEntity(URL imagePath) throws IOException {
         super();
         name = "ShipEntity";
-        img = new GameImage(imagePath);
+        //img = new GameImage(imagePath);
+        shape = new Quad();
+        shape.setImage(new GameImage(imagePath), true);
         position = new Point2D(0,0);
         rotation = 0.0f;
         direction = new Vector2D();
@@ -117,14 +123,16 @@ public class ShipEntity implements Entity, UserControllable {
 
     @Override
     public Shape2D getShape() {
-        return null;
+        return shape;
     }
 
     @Override
     public void render(Renderer renderer, long l) {
-        renderer.drawImage((float)position.getX(), (float)position.getY(),rotation, this.img);
+        shape.setPosition((float)position.getX(), (float)position.getY());
+        shape.rotate(rotation);
+        shape.render(renderer, l);
     }
-
+    
     @Override
     public void update(long l) {
 
@@ -136,6 +144,7 @@ public class ShipEntity implements Entity, UserControllable {
         
         curSpeed.mul(decay);
         
+        super.update(l);
     }
 
     @Override
@@ -145,7 +154,7 @@ public class ShipEntity implements Entity, UserControllable {
 
     @Override
     public void release() {
-        this.img.release();
+        
     }
 
     @Override
