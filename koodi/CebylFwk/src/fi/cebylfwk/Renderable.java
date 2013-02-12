@@ -13,5 +13,11 @@ import fi.cebylfwk.graphics.Renderer;
  * @version     %I%, %G%
  */
 public interface Renderable {
+    /**
+     * Renders the given renderab object.
+     * 
+     * @param r Renderer which will have all the rendering commands.
+     * @param time Time which could be used in interpolation in rendering.
+     */
     public void render(Renderer r, long time);
 }

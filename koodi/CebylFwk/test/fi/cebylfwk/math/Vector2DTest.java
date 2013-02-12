@@ -115,11 +115,16 @@ public class Vector2DTest {
 
     @Test
     public void testDirectionVector() {
-        Vector2D vecUp = Vector2D.createDirectionVector(0);
-        Vector2D vecRight = Vector2D.createDirectionVector(90);
-        Vector2D vecDown = Vector2D.createDirectionVector(180);
-        Vector2D vecLeft = Vector2D.createDirectionVector(270);
-
+        Vector2D vecUp = new Vector2D(); 
+        Vector2D vecRight = new Vector2D();
+        Vector2D vecDown = new Vector2D();
+        Vector2D vecLeft = new Vector2D();
+        
+        vecUp.setDirectionByAngle(0);
+        vecRight.setDirectionByAngle(90);
+        vecDown.setDirectionByAngle(180);
+        vecLeft.setDirectionByAngle(270);
+        
         //Assert vecUp
         assertEquals("vecUp.getX() != 0.0", 0.0, vecUp.getX(), 0.001);
         assertEquals("vecUp.getY() != 1.0", 1.0, vecUp.getY(), 0.001);

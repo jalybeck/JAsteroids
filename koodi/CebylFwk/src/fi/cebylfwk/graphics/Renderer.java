@@ -73,4 +73,10 @@ public interface Renderer {
      * @param b
      */
     public void clear(float r, float g, float b);
+    /**
+     * Clears screen with given color.
+     *
+     * @param color
+     */
+    public void clear(Color color);
 }

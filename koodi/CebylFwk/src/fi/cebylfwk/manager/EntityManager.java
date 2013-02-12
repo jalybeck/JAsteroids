@@ -19,6 +19,7 @@ public class EntityManager extends ResourceManager<Entity> implements Renderable
         this.setResource(e, e);
     }
     
+    
     public void update(long time) {
         for(Entity e : this.getResourceList()) {
             if(e.isActive()) {
@@ -28,7 +29,7 @@ public class EntityManager extends ResourceManager<Entity> implements Renderable
     }
     
     public void render(Renderer r, long time) {
-        for(Entity e : this.getResourceList()) {
+        for(Entity e : this.getResourceList()) {   
             if(e.isVisible() && e.isActive()) {
                 e.render(r,time);
             }

@@ -16,10 +16,33 @@ import fi.cebylfwk.shape.Shape2D;
  * @version     %I%, %G%
  */
 public interface Entity extends Renderable, Updateable, Resource {
+    /**
+     * Sets entity active state.
+     * This can be used, if the entity is no longer part of the game.
+     * 
+     * @param flag
+     */
     public void setActive(boolean flag);
+    
+    /**
+     * Checks, if the entity is still active.
+     * 
+     * @return
+     */
     public boolean isActive();
     
+    /**
+     * Sets entity visible state.
+     * 
+     * @param flag
+     */
     public void setVisible(boolean flag);
+    
+    /**
+     * If entity should be rendered.
+     * 
+     * @return
+     */
     public boolean isVisible();
     
     public String getID();
@@ -37,6 +60,13 @@ public interface Entity extends Renderable, Updateable, Resource {
     
     public void reset();
     
+    /**
+     * Collision check of the entities.
+     * There should be logic what happens when
+     * entity given as parameter collides with this entity.
+     * 
+     * @param e Entity which collides with this one.
+     */
     public void onCollision(Entity e);
     
     public Shape2D getShape();

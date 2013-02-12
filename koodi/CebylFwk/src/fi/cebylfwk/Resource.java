@@ -10,7 +10,15 @@ import java.nio.ByteBuffer;
  * @version     %I%, %G%
  */
 public interface Resource {
+    /**
+     * Returns raw resource data.
+     * 
+     * @return ByteBuffer which could hold raw resource data.
+     */
     public ByteBuffer getResourceData();
     
+    /**
+     * Releases resource.
+     */
     public void release();
 }

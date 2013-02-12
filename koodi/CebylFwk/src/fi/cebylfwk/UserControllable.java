@@ -10,11 +10,36 @@ package fi.cebylfwk;
  * @version     %I%, %G%
  */
 public interface UserControllable {
+    /**
+     * Return true, if this is currently active user controllable item.
+     * @return true|false
+     */
     boolean isCurrent();
     
-    void turnLeft(double angle);
-    void turnRight(double angle);
+    /**
+     * Move Left logic should be put here.
+     * 
+     * @param value
+     */
+    void moveLeft(double value);
     
-    void accelerate(double value);
-    void decelerate(double value);
+    /**
+     * Move right logic should be put here.
+     * 
+     * @param value
+     */
+    void moveRight(double value);
+    
+    /**
+     * Move up logic should be put here.
+     * 
+     * @param value
+     */
+    void moveUp(double value);
+    
+    /**
+     * Move down logic should be put here.
+     * @param value
+     */
+    void moveDown(double value);
 }

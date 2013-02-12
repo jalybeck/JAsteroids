@@ -5,6 +5,7 @@ import fi.cebylfwk.Resource;
 import java.io.IOException;
 
 
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -54,20 +55,26 @@ public abstract class ResourceManager<T extends Resource> {
         }
     }
 
-    protected List<T> getResourceList() {
-        return (List<T>)resourceStore.values();
+    protected Collection<T> getResourceList() {
+        return resourceStore.values();
     }
 
     public int getResourceCount() {
         return resourceStore.size();
     }
-
+    
+    /**
+     * Removes all the resources from the internal hashmap.
+     * Also calls the resources release methods.
+     * 
+     * @see Resource#release()
+     */
     public void clear() {
         if (resourceStore != null && !resourceStore.isEmpty()) {
             while(!resourceStore.isEmpty()) {
                 Iterator it = resourceStore.keySet().iterator();
                 if (it.hasNext()) {
-                    String key = (String)it.next();
+                    Object key = it.next();
                     removeResource(key);
                 }
             }

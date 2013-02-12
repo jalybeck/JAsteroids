@@ -25,29 +25,52 @@ public class Vector2D {
     public Vector2D(Vector2D vec) {
         this(vec.x,vec.y);
     }
-
+    
+    /**
+     * Vector addition.
+     * 
+     * @param v2
+     * @return Current vector added by parameter vector.
+     */
     public Vector2D add(Vector2D v2) {
         this.x += v2.x;
         this.y += v2.y;
         
         return this;
     }
-
+    
+    /**
+     * Vector substitution.
+     * 
+     * @param v2
+     * @return Current vector substituted by given parameter vector.
+     */
     public Vector2D sub(Vector2D v2) {
         this.x -= v2.x;
         this.y -= v2.y;
         
         return this;
     }
-
+    
+    /**
+     * Vector multiplication by scalar.
+     * 
+     * @param s
+     * @return Current vector multiplied by scalar.
+     */
     public Vector2D mul(double s) {
         this.x *= s;
         this.y *= s;
         
         return this;
-        
     }
-
+    
+    /**
+     * Calculates the dot product of the two vectors.
+     * 
+     * @param vec
+     * @return
+     */
     public double dot(Vector2D vec) {
         return this.x * vec.x + this.y * vec.y;
     }
@@ -75,7 +98,13 @@ public class Vector2D {
         
         return this;
     }
-
+    
+    /**
+     * Vector negation.
+     * Changes sign of the vector x and y components.
+     * 
+     * @return Current negated vector.
+     */
     public Vector2D negate() {
         this.x = -this.x;
         this.y = -this.y;
@@ -83,6 +112,12 @@ public class Vector2D {
         return this;
     }
     
+    /**
+     * Projects 2D vector given as parameter on to this vector.
+     * 
+     * @param vec
+     * @return Projected vector.
+     */
     public Vector2D createProjectionVector(Vector2D vec) {
         Vector2D projVec = new Vector2D(0,0);
         
@@ -99,22 +134,21 @@ public class Vector2D {
         
         return projVec;
     }
-    
+
     /**
      * Create unit length direction vector
      *
      * @param angle as degrees
      * @return unit length direction vector on xy plane
      */
-    public static Vector2D createDirectionVector(double angle) {
+    public void setDirectionByAngle(double angle) {
         double radians = Math.toRadians(angle);
         
         double xComp =  Math.sin(radians);
         double yComp =  Math.cos(radians);
         
-        Vector2D dirVector = new Vector2D(xComp , yComp);
-        
-        return dirVector;
+        this.x = xComp;
+        this.y = yComp;
     }
 
     public double getX() {

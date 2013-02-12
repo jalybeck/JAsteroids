@@ -42,6 +42,10 @@ public class StateHandlerTest {
         @Override
         public void processKeyboardInput() {
         }
+
+        @Override
+        public void initialize() {
+        }
     }
     
     private class MainGameStateMock extends State {
@@ -66,6 +70,10 @@ public class StateHandlerTest {
         @Override
         public void processKeyboardInput() {
         }
+
+        @Override
+        public void initialize() {
+        }
     }
     
     private class GameOverStateMock extends State {
@@ -86,6 +94,10 @@ public class StateHandlerTest {
 
         @Override
         public void processKeyboardInput() {
+        }
+
+        @Override
+        public void initialize() {
         }
     }    
     

@@ -1,5 +1,6 @@
 package fi.cebylfwk.lwjgl;
 
+import fi.cebylfwk.graphics.Color;
 import fi.cebylfwk.graphics.Image;
 import fi.cebylfwk.graphics.Renderer;
 
@@ -23,18 +24,27 @@ public class RendererLWJGL implements Renderer {
 
     public RendererLWJGL() {
         super();
-        this.textureCache = new HashMap<Image,Integer>();
+        textureCache = new HashMap<Image,Integer>();
     }
     
-    private DisplayMode queryDisplayMode(int width, int height, int bpp) throws Exception {
+    /**
+     * Queries display given display mode and returns it if found.
+     * 
+     * @param resX X resolution.
+     * @param resY Y resolution.
+     * @param bpp Bits per Pixel (16,24,32)
+     * @return
+     * @throws Exception
+     */
+    private DisplayMode queryDisplayMode(int resX, int resY, int bpp) throws Exception {
         DisplayMode mode = null;
 
         try {
             DisplayMode[] modes = Display.getAvailableDisplayModes();
 
             for (int i = 0; i < modes.length; i++) {
-                if ((modes[i].getWidth() == width) &&
-                    (modes[i].getHeight() == height)) {
+                if ((modes[i].getWidth() == resX) &&
+                    (modes[i].getHeight() == resY)) {
                     mode = modes[i];
                     break;
                 }
@@ -45,7 +55,7 @@ public class RendererLWJGL implements Renderer {
 
         if (mode == null) {
             throw new Exception("Unable to set screen resolution to: " +
-                                width + "x" + height + "x" + bpp);
+                                resX + "x" + resY + "x" + bpp);
         }
 
         return mode;        
@@ -57,7 +67,6 @@ public class RendererLWJGL implements Renderer {
         Display.setDisplayMode(mode);
 
         // Create a fullscreen window with 1:1 orthographic 2D projection (default)
-        Display.setTitle("Default");
         Display.setFullscreen(fullScreen);
 
         // Enable vsync if we can (due to how OpenGL works, it cannot be guarenteed to always work)
@@ -97,7 +106,12 @@ public class RendererLWJGL implements Renderer {
     public void drawImage(float x, float y, Image img) {
         internalDrawImage(x, y, img.getWidth(), img.getHeight(), 0, img, true, false);
     }
-    
+    /**
+     * Used internally to bind the texture to current OpenGL context.
+     * Also caches textures in hashmap.
+     * 
+     * @param img Texture image data.
+     */
     private void internalBindTexture(Image img) {
         //Bind texture and set texture parameters
         
@@ -169,6 +183,21 @@ public class RendererLWJGL implements Renderer {
         
     }
     
+    /**
+     * Used internally to draw the image.
+     * Multipurpose image drawing method, which is used by
+     * public draw methods.
+     * 
+     * 
+     * @param x X Position of the image.
+     * @param y Y position of the image.
+     * @param xScale x scaling factor of the image.
+     * @param yScale y scaling factor of the image.
+     * @param rotAngle Rotation angle in degrees.
+     * @param img Image data which should be drawn.
+     * @param scale Is scaling enabled?
+     * @param rotate Is rotation enabled?
+     */
     private void internalDrawImage(float x, float y, float xScale, float yScale, float rotAngle, Image img, boolean scale, boolean rotate) {
         
         this.internalBindTexture(img);
@@ -257,5 +286,10 @@ public class RendererLWJGL implements Renderer {
     @Override
     public void clear(float r, float g, float b) {
         this.clear(r,g,b,1.0f);
+    }
+
+    @Override
+    public void clear(Color color) {
+        this.clear(color.getRed(),color.getGreen(),color.getBlue(),color.getAlpha());
     }
 }
