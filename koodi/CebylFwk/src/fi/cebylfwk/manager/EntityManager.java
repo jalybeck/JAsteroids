@@ -10,6 +10,8 @@ import fi.cebylfwk.shape.Shape2D;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 /**
@@ -56,6 +58,7 @@ public class EntityManager extends ResourceManager<Entity> implements Renderable
         if (this.getResourceList().removeAll(this.removableElements) && collidibles.removeAll(this.removableElements)) {
             this.removableElements.clear();
         }
+        
     }
     
     /**
@@ -65,6 +68,7 @@ public class EntityManager extends ResourceManager<Entity> implements Renderable
      * @param time
      */
     public void render(Renderer r, long time) {
+        //sortEntitiesByZIndex();
         for(Entity e : this.getResourceList()) {   
             if(e.isVisible() && e.isActive()) {
                 e.render(r,time);
@@ -90,6 +94,20 @@ public class EntityManager extends ResourceManager<Entity> implements Renderable
         Shape2D e = b.getShape();
         
         return d.getBoundingObject().intersects(e.getBoundingObject());
+    }
+    
+    private void sortEntitiesByZIndex() {
+            Collections.sort(this.getResourceList(), new Comparator<Entity>() {
+
+                public int compare(Entity o1, Entity o2) {
+                    int val = 0;
+                    if(o1.getZIndex() > o2.getZIndex())
+                        val = -1;
+                    else if(o1.getZIndex() < o2.getZIndex()) 
+                        val = 1;
+                    return val;
+                }
+        });
     }
     
 }

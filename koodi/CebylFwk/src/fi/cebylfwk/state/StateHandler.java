@@ -53,12 +53,12 @@ public class StateHandler {
                     previousState = currentState;
                     currentState = states.removeFirst();
                     
-                    currentState.initialize();
+                    currentState.initialize(previousState.getParametersForNextState());
                     previousState.release();
                 }
             } else {
                 currentState = states.removeFirst();
-                currentState.initialize();
+                currentState.initialize(null);
             }
         } catch(NoSuchElementException e) {
             //no elements left return null

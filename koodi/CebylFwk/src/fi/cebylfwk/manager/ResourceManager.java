@@ -5,6 +5,7 @@ import fi.cebylfwk.Resource;
 import java.io.IOException;
 
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -55,8 +56,8 @@ public abstract class ResourceManager<T extends Resource> {
         }
     }
 
-    protected Collection<T> getResourceList() {
-        return resourceStore.values();
+    protected List<T> getResourceList() {
+        return new ArrayList<T>(resourceStore.values());
     }
 
     public int getResourceCount() {

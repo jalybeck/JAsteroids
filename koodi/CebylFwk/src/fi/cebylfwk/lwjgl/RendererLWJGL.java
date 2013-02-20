@@ -1,6 +1,7 @@
 package fi.cebylfwk.lwjgl;
 
 import fi.cebylfwk.graphics.Color;
+import fi.cebylfwk.graphics.Font;
 import fi.cebylfwk.graphics.Image;
 import fi.cebylfwk.graphics.Renderer;
 
@@ -21,7 +22,7 @@ import org.lwjgl.opengl.GL12;
  */
 public class RendererLWJGL implements Renderer {
     private HashMap<Image,Integer> textureCache;
-
+    
     public RendererLWJGL() {
         super();
         textureCache = new HashMap<Image,Integer>();
@@ -59,7 +60,8 @@ public class RendererLWJGL implements Renderer {
         }
 
         return mode;        
-    }    
+    }
+    
     @Override
     public void initialize(int resX, int resY, int bpp, boolean fullScreen, boolean vSync) throws Exception {
         DisplayMode mode = queryDisplayMode(resX,resY,bpp);
@@ -135,6 +137,7 @@ public class RendererLWJGL implements Renderer {
         */
         internalDrawImage(x, y, img.getWidth(), img.getHeight(), 0, img, true, false, txStart, txEnd, tyStart, tyEnd);
     }
+    
     /**
      * Used internally to bind the texture to current OpenGL context.
      * Also caches textures in hashmap.
@@ -370,6 +373,43 @@ public class RendererLWJGL implements Renderer {
     @Override
     public void clear(Color color) {
         this.clear(color.getRed(),color.getGreen(),color.getBlue(),color.getAlpha());
+    }
+    
+    public void drawString(String str, int xPos, int yPos, Font font, Color color) {
+        
+        //this.setDepthTest(false);
+        //this.setShaderProgram(null);
+
+        //this.setCulling(false);
+        
+        //GL11.glEnable(GL11.GL_BLEND);
+        GL11.glPushAttrib(GL11.GL_CURRENT_BIT);
+        GL11.glBlendFunc(GL11.GL_ONE,GL11.GL_ONE);
+
+        GL11.glMatrixMode(GL11.GL_PROJECTION);
+        GL11.glPushMatrix();
+        GL11.glLoadIdentity();
+        GL11.glOrtho(0.0, Display.getDisplayMode().getWidth(), 0.0,
+                   Display.getDisplayMode().getHeight(), -1.0, 1.0);
+        GL11.glMatrixMode(GL11.GL_MODELVIEW);
+        GL11.glLoadIdentity();
+        GL11.glViewport(0, 0, Display.getDisplayMode().getWidth(),
+                      Display.getDisplayMode().getHeight());
+        
+        GL11.glColor3f(color.getRed(), color.getGreen(), color.getBlue());
+        font.drawString(xPos, Display.getDisplayMode().getHeight() - font.getHeight() - yPos, str, 1.0f, 1.0f);
+        
+        // switch to projection mode
+        GL11.glMatrixMode(GL11.GL_PROJECTION);
+        GL11.glPopMatrix();
+        // switch back to modelview mode
+        GL11.glMatrixMode(GL11.GL_MODELVIEW);
+        
+        //this.setDepthTest(true);
+        GL11.glBlendFunc(GL11.GL_SRC_ALPHA,GL11.GL_ONE_MINUS_SRC_ALPHA);
+        //GL11.glDisable(GL11.GL_BLEND);
+        
+        GL11.glPopAttrib();
     }
 
 }

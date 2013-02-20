@@ -31,6 +31,13 @@ public class GameImage implements Image {
         img = ImageIO.read(url);
     }
     
+    public GameImage(String fileName) throws IOException {
+        
+        ImageIO.setUseCache(false);
+        
+        img = ImageIO.read(this.getClass().getResourceAsStream(fileName));
+    }
+    
     public GameImage(BufferedImage img)  {
         this.img = img;
     }

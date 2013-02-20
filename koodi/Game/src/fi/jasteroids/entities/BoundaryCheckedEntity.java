@@ -25,6 +25,7 @@ import org.lwjgl.opengl.Display;
 public abstract class BoundaryCheckedEntity implements Entity, Collidible {
     private Color rectangleColor;
     private boolean hasCollision;
+    private int zIndex;
     
     public BoundaryCheckedEntity() {
         super();
@@ -98,11 +99,12 @@ public abstract class BoundaryCheckedEntity implements Entity, Collidible {
 
     @Override
     public void setZIndex(int i) {
+        zIndex = i;
     }
 
     @Override
     public int getZIndex() {
-        return 0;
+        return zIndex;
     }
 
     @Override

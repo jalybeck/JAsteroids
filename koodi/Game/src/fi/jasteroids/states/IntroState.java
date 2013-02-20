@@ -8,6 +8,9 @@ import java.io.IOException;
 
 import java.net.URL;
 
+import java.util.Collections;
+import java.util.Map;
+
 import org.lwjgl.input.Keyboard;
 /**
  * IntroState is the first state shown
@@ -21,17 +24,25 @@ import org.lwjgl.input.Keyboard;
 public class IntroState extends State {
     public IntroState(String name) throws IOException {
         super(name);
-        this.addEntity(new FullScreenImageEntity(new URL(this.getClass().getResource(".") + "data/intro.png")));
+        this.addEntity(new FullScreenImageEntity(this.getClass().getResource("data/intro.png")));
     }
 
     @Override
     public void processKeyboardInput() {
         if(Keyboard.getNumKeyboardEvents() > 0) {
             this.finished = true;
+        } else {
+            this.exhaustKeyboardBuffer();
         }
     }
 
     @Override
-    public void initialize() {
+    public void initialize(Map<String, String> parameters) {
+    }
+
+
+    @Override
+    public Map<String, String> getParametersForNextState() {
+        return Collections.emptyMap();
     }
 }

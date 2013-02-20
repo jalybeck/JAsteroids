@@ -105,4 +105,13 @@ public interface Renderer {
      * @param color
      */
     public void clear(Color color);
+    
+    /**
+     * Draws string of text using selected font and color.
+     * 
+     * @param str String of text
+     * @param xPos X position of string
+     * @param yPos Y position of string
+     */
+    public void drawString(String str, int xPos, int yPos, Font font, Color color);
 }

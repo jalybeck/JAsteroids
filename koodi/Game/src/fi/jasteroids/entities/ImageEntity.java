@@ -14,7 +14,7 @@ import java.net.URL;
 
 import java.nio.ByteBuffer;
 
-public class ImageEntity implements Entity, Cloneable {
+public class ImageEntity implements Entity {
     private String name;
     private boolean active;
     private boolean visible;
@@ -23,6 +23,7 @@ public class ImageEntity implements Entity, Cloneable {
     private Point2D position;
     private Point2D txOffset;
     private Point2D tyOffset;
+    private int zIndex;
 
     public ImageEntity(URL imagePath) throws IOException {
         super();
@@ -125,11 +126,12 @@ public class ImageEntity implements Entity, Cloneable {
 
     @Override
     public void setZIndex(int i) {
+        zIndex = i;
     }
 
     @Override
     public int getZIndex() {
-        return 0;
+        return zIndex;
     }
 
     @Override

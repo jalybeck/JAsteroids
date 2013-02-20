@@ -7,7 +7,10 @@ import fi.cebylfwk.state.StateHandler;
 
 import java.lang.reflect.Field;
 
+import java.util.Collections;
 import java.util.LinkedList;
+
+import java.util.Map;
 
 import org.junit.After;
 import org.junit.AfterClass;
@@ -44,7 +47,12 @@ public class StateHandlerTest {
         }
 
         @Override
-        public void initialize() {
+        public void initialize(Map<String, String> parameters) {
+        }
+
+        @Override
+        public Map<String, String> getParametersForNextState() {
+            return Collections.emptyMap();
         }
     }
     
@@ -72,7 +80,12 @@ public class StateHandlerTest {
         }
 
         @Override
-        public void initialize() {
+        public void initialize(Map<String, String> parameters) {
+        }
+
+        @Override
+        public Map<String, String> getParametersForNextState() {
+            return Collections.emptyMap();
         }
     }
     
@@ -97,7 +110,12 @@ public class StateHandlerTest {
         }
 
         @Override
-        public void initialize() {
+        public void initialize(Map<String, String> parameters) {
+        }
+
+        @Override
+        public Map<String, String> getParametersForNextState() {
+            return Collections.emptyMap();
         }
     }    
     

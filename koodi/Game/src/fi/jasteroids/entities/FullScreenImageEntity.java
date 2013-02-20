@@ -26,11 +26,21 @@ public class FullScreenImageEntity implements Entity {
     private boolean active;
     private boolean visible;
     private Image img;
+    private int zIndex;
     
     public FullScreenImageEntity(URL imagePath) throws IOException {
         super();
         this.name = "FullScreenImageEntity";
         img = new GameImage(imagePath);
+        
+        active = true;
+        visible = true;
+    }
+
+    public FullScreenImageEntity(String fileName) throws IOException {
+        super();
+        this.name = "FullScreenImageEntity";
+        img = new GameImage(fileName);
         
         active = true;
         visible = true;
@@ -85,11 +95,12 @@ public class FullScreenImageEntity implements Entity {
 
     @Override
     public void setZIndex(int i) {
+        zIndex = i;
     }
 
     @Override
     public int getZIndex() {
-        return 0;
+        return zIndex;
     }
 
     @Override

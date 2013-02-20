@@ -2,6 +2,7 @@ package fi.jasteroids;
 
 import fi.cebylfwk.lwjgl.GameLWJGL;
 
+import fi.jasteroids.states.HighScoreState;
 import fi.jasteroids.states.IntroState;
 
 import fi.jasteroids.states.MainGameState;
@@ -33,6 +34,7 @@ public class JAsteroids extends GameLWJGL {
         
         this.addState(new IntroState("First State"));
         this.addState(new MainGameState("Second State"));
+        this.addState(new HighScoreState("Last State"));
     }
     
     public static void main(String[] args) throws IOException, Exception {
