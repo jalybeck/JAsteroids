@@ -90,21 +90,50 @@ public class RendererLWJGL implements Renderer {
         GL11.glEnable(GL11.GL_TEXTURE_2D);  
         
         
-    }    
-
+    }
+    
+    @Override
+    public void drawImage(float x, float y, float xScale, float yScale, float rotAngle, float txStart, float txEnd,
+                          float tyStart, float tyEnd, Image img) {
+        internalDrawImage(x, y, xScale, yScale, rotAngle, img, true, true, txStart, txEnd, tyStart, tyEnd);
+    }
+    
     @Override
     public void drawImage(float x, float y, float xScale, float yScale, float rotAngle, Image img) {
-        internalDrawImage(x, y, xScale, yScale, rotAngle, img, true, true);
+        float txStart = 0.0f;
+        float txEnd = 1.0f;
+        float tyStart = 0.0f;
+        float tyEnd = 1.0f;
+        
+        internalDrawImage(x, y, xScale, yScale, rotAngle, img, true, true, txStart, txEnd, tyStart, tyEnd);
     }
     
     @Override
     public void drawImage(float x, float y, float rotAngle, Image img) {
-        internalDrawImage(x, y, img.getWidth(), img.getHeight(), rotAngle, img, true, true);
+        float txStart = 0.0f;
+        float txEnd = 1.0f;
+        float tyStart = 0.0f;
+        float tyEnd = 1.0f;        
+        internalDrawImage(x, y, img.getWidth(), img.getHeight(), rotAngle, img, true, true, txStart, txEnd, tyStart, tyEnd);
     }
 
     @Override
     public void drawImage(float x, float y, Image img) {
-        internalDrawImage(x, y, img.getWidth(), img.getHeight(), 0, img, true, false);
+        float txStart = 0.0f;
+        float txEnd = 1.0f;
+        float tyStart = 0.0f;
+        float tyEnd = 1.0f;
+        /*
+        GL11.glTexCoord2f(0.0f, 0.0f); 
+        GL11.glVertex2f(-1.0f, 1.0f);
+        GL11.glTexCoord2f(0.0f, 1.0f);
+        GL11.glVertex2f(-1.0f, -1.0f);
+        GL11.glTexCoord2f(1.0f, 1.0f);
+        GL11.glVertex2f(1.0f, -1.0f);
+        GL11.glTexCoord2f(1.0f, 0.0f);
+        GL11.glVertex2f(1.0f, 1.0f);
+        */
+        internalDrawImage(x, y, img.getWidth(), img.getHeight(), 0, img, true, false, txStart, txEnd, tyStart, tyEnd);
     }
     /**
      * Used internally to bind the texture to current OpenGL context.
@@ -197,8 +226,12 @@ public class RendererLWJGL implements Renderer {
      * @param img Image data which should be drawn.
      * @param scale Is scaling enabled?
      * @param rotate Is rotation enabled?
+     * @param uOffset x texture offset
+     * @param vOffset y texture offset
      */
-    private void internalDrawImage(float x, float y, float xScale, float yScale, float rotAngle, Image img, boolean scale, boolean rotate) {
+    private void internalDrawImage(float x, float y, float xScale, float yScale, float rotAngle, Image img, boolean scale, boolean rotate, float txStart, float txEnd, float tyStart, float tyEnd ) {
+        GL11.glPushAttrib(GL11.GL_CURRENT_BIT);
+        GL11.glEnable(GL11.GL_TEXTURE_2D);
         
         this.internalBindTexture(img);
         GL11.glMatrixMode(GL11.GL_MODELVIEW);
@@ -219,24 +252,36 @@ public class RendererLWJGL implements Renderer {
         if(scale)
             GL11.glScalef(xScale, yScale, 1.0f);    
         
-        // render the square
+        internalRenderSquare(txStart, txEnd, tyStart, tyEnd);
+        
+        GL11.glPopMatrix();
+        
+        GL11.glPopAttrib();
+        
+        GL11.glBindTexture(GL11.GL_TEXTURE_2D, 0);
+        
+    }
+    
+    private void internalRenderSquare(float xStart, float xEnd, float yStart, float yEnd) {
         GL11.glBegin(GL11.GL_QUADS);
         
-        GL11.glTexCoord2f(0.0f, 0.0f); 
+        GL11.glTexCoord2f(xStart, yStart); 
         GL11.glVertex2f(-1.0f, 1.0f);
-        GL11.glTexCoord2f(0.0f, 1.0f);
+        GL11.glTexCoord2f(xStart, yEnd);
         GL11.glVertex2f(-1.0f, -1.0f);
-        GL11.glTexCoord2f(1.0f, 1.0f);
+        GL11.glTexCoord2f(xEnd, yEnd);
         GL11.glVertex2f(1.0f, -1.0f);
-        GL11.glTexCoord2f(1.0f, 0.0f);
-        GL11.glVertex2f(1.0f, 1.0f);
-        GL11.glEnd();
+        GL11.glTexCoord2f(xEnd, yStart);
+        GL11.glVertex2f(1.0f, 1.0f);        
         
-        GL11.glPopMatrix();        
+        GL11.glEnd();
     }
     
     @Override
     public void drawFullScreenImage(Image img) {
+        GL11.glEnable(GL11.GL_TEXTURE_2D);
+        GL11.glPushAttrib(GL11.GL_CURRENT_BIT);
+        
         //Set orthogonal projection to match display resolution
         GL11.glMatrixMode( GL11.GL_PROJECTION );
         GL11.glPushMatrix();
@@ -273,8 +318,42 @@ public class RendererLWJGL implements Renderer {
 
         GL11.glMatrixMode( GL11.GL_MODELVIEW );
         GL11.glPopMatrix(); 
-
+        GL11.glPopAttrib();
+        
+        GL11.glBindTexture(GL11.GL_TEXTURE_2D, 0);
     }
+    
+    public void drawLineRectangle(float x, float y, float width, float height, Color col) {
+        float left = width * -1.0f;
+        float top = height * 1.0f;
+        float right = -left;
+        float bottom = -top;
+        GL11.glPushAttrib(GL11.GL_CURRENT_BIT);
+        
+        GL11.glMatrixMode(GL11.GL_MODELVIEW);
+        
+        GL11.glPushMatrix();
+        
+        GL11.glLoadIdentity();
+        
+        GL11.glTranslatef(0.0f + x,Display.getDisplayMode().getHeight() - y, 0.0f);
+        //GL11.glScalef(this.xScale, this.yScale, 1.0f);
+        
+        GL11.glDisable(GL11.GL_TEXTURE_2D);
+        GL11.glBegin(GL11.GL_LINE_LOOP);
+        GL11.glColor3f(col.getRed(),col.getGreen(),col.getBlue());
+        GL11.glVertex2f(left, top);
+        GL11.glVertex2f(left, bottom);
+        GL11.glVertex2f(right, bottom);
+        GL11.glVertex2f(right, top);
+        GL11.glEnd();
+        //GL11.glColor3f(0f,0f,0f);
+        GL11.glEnable(GL11.GL_TEXTURE_2D);
+        
+        GL11.glPopMatrix();
+
+        GL11.glPopAttrib();
+    }   
 
     @Override
     public void clear(float r, float g, float b, float a) {
@@ -292,4 +371,5 @@ public class RendererLWJGL implements Renderer {
     public void clear(Color color) {
         this.clear(color.getRed(),color.getGreen(),color.getBlue(),color.getAlpha());
     }
+
 }

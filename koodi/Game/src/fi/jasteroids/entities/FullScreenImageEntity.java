@@ -71,15 +71,15 @@ public class FullScreenImageEntity implements Entity {
     }
 
     @Override
-    public void move(Vector2D vector2D) {
+    public void move(float x, float y) {
     }
 
     @Override
-    public void scale(Vector2D vector2D) {
+    public void scale(Point2D vector2D) {
     }
 
     @Override
-    public Vector2D getScale() {
+    public Point2D getScale() {
         return null;
     }
 
@@ -94,10 +94,6 @@ public class FullScreenImageEntity implements Entity {
 
     @Override
     public void reset() {
-    }
-
-    @Override
-    public void onCollision(Entity entity) {
     }
 
     @Override
@@ -123,5 +119,14 @@ public class FullScreenImageEntity implements Entity {
     public void release() {
         img.release();
         img = null;
+    }
+
+    @Override
+    public void setRotation(double d) {
+    }
+
+    @Override
+    public double getRotation() {
+        return 0.0;
     }
 }

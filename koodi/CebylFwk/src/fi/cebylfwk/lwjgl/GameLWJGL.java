@@ -71,10 +71,7 @@ public abstract class GameLWJGL implements Game {
                     
                     st.update(delta);
                     st.render(this.renderer, delta);
-                    
-                    //Use framerate synchronization of LWJGL library
-                    Display.sync(this.frameRate);
-                    
+
                 }
                 else { //window at background
                     st.update(delta);
@@ -83,11 +80,13 @@ public abstract class GameLWJGL implements Game {
                          st.render(this.renderer, delta);
                     }
                 }
-                
                 Display.update();
+                //Use framerate synchronization of LWJGL library
+                Display.sync(st.getFPS());
             } else {
                 this.finished = true;
             }
+            
         }        
     }
 
@@ -98,6 +97,9 @@ public abstract class GameLWJGL implements Game {
 
     @Override
     public void addState(State st) {
+        if(st.getFPS()<=0) {
+            st.setFPS(this.frameRate);
+        }        
         sth.addState(st);
     }
 }

@@ -17,7 +17,7 @@ public interface Renderable {
      * Renders the given renderab object.
      * 
      * @param r Renderer which will have all the rendering commands.
-     * @param time Time which could be used in interpolation in rendering.
+     * @param deltaTime Frame delta time in nanoseconds. This be used when updating the logic, so it runs same speed on every machine.
      */
-    public void render(Renderer r, long time);
+    public void render(Renderer r, long deltaTime);
 }

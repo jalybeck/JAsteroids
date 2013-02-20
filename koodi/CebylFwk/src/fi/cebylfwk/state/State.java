@@ -20,6 +20,7 @@ public abstract class State implements Renderable, Updateable {
     private EntityManager em;
     private boolean clearScreen;
     private Color clearColor;
+    private int FPS;
 
     private State() {
         em = new EntityManager();
@@ -77,6 +78,14 @@ public abstract class State implements Renderable, Updateable {
     
     public void release() {
         em.clear();
+    }
+    
+    public void setFPS(int fps) {
+        this.FPS = fps;
+    }
+    
+    public int getFPS() {
+        return FPS;
     }
     
     public abstract void processKeyboardInput();

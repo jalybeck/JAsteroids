@@ -43,4 +43,13 @@ public class Point2D {
     public double getY() {
         return y;
     }
+    
+    public void addTo(double x, double y) {
+        this.x += x;
+        this.y += y;
+    }
+    
+    public String toString() {
+        return "("+x+","+y+")";    
+    }
 }

@@ -1,5 +1,8 @@
 package fi.cebylfwk.shape;
 
+import fi.cebylfwk.Renderable;
+import fi.cebylfwk.graphics.Renderer;
+
 /**
  * Rectangle object is used as bounding object
  * to check against shape collisions.
@@ -55,10 +58,10 @@ public class Rectangle implements BoundingObject<Rectangle> {
         
         return sb.toString();
     }
-
+/*
     @Override
     public Rectangle getBoundingObject() {
         return this;
-    }
+    }*/
 }
 

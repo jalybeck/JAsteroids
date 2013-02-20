@@ -1,9 +1,12 @@
 package fi.jasteroids.entities;
 
+import fi.cebylfwk.Collidible;
 import fi.cebylfwk.component.Entity;
+import fi.cebylfwk.graphics.Color;
 import fi.cebylfwk.graphics.Renderer;
 import fi.cebylfwk.math.Point2D;
 import fi.cebylfwk.math.Vector2D;
+import fi.cebylfwk.shape.Rectangle;
 import fi.cebylfwk.shape.Shape2D;
 
 import java.nio.ByteBuffer;
@@ -19,14 +22,19 @@ import org.lwjgl.opengl.Display;
  * @version     %I%, %G%
  * @see         Entity
  */
-public abstract class BoundaryCheckedEntity implements Entity {
+public abstract class BoundaryCheckedEntity implements Entity, Collidible {
+    private Color rectangleColor;
+    private boolean hasCollision;
+    
     public BoundaryCheckedEntity() {
         super();
+        rectangleColor = new Color(1.0f, 0.0f, 0.0f,1.0f);
+        hasCollision = false;
     }
     private void checkBoundaries() {
         Point2D entityPos = this.getPosition();
-        float entityHeight = this.getShape().getBoundingRectangle().getHeight();
-        float entityWidth = this.getShape().getBoundingRectangle().getWidth();
+        float entityHeight = ((Rectangle)this.getShape().getBoundingObject()).getHeight();
+        float entityWidth = ((Rectangle)this.getShape().getBoundingObject()).getWidth();
         
         if (entityPos.getY() < 0 - entityHeight) {
             entityPos.set(new Point2D(entityPos.getX(),
@@ -76,15 +84,15 @@ public abstract class BoundaryCheckedEntity implements Entity {
     }
 
     @Override
-    public void move(Vector2D vector2D) {
+    public void move(float x, float y) {
     }
 
     @Override
-    public void scale(Vector2D vector2D) {
+    public void scale(Point2D vector2D) {
     }
 
     @Override
-    public Vector2D getScale() {
+    public Point2D getScale() {
         return null;
     }
 
@@ -103,6 +111,8 @@ public abstract class BoundaryCheckedEntity implements Entity {
 
     @Override
     public void onCollision(Entity entity) {
+        //System.out.println("Collision "+entity+"!");
+        hasCollision = true;
     }
 
     @Override
@@ -112,11 +122,20 @@ public abstract class BoundaryCheckedEntity implements Entity {
 
     @Override
     public void render(Renderer renderer, long l) {
+        //Rectangle r = (Rectangle)this.getShape().getBoundingObject();
+        //renderer.drawLineRectangle((float)this.getPosition().getX(), (float)this.getPosition().getY(), r.getWidth(), r.getHeight(), rectangleColor);
     }
 
     @Override
     public void update(long l) {
         this.checkBoundaries();
+        
+        if(hasCollision) {
+            rectangleColor.setRGBA(1.0f, 1.0f, 1.0f, 1.0f);
+            hasCollision = false;
+        } else {
+            rectangleColor.setRGBA(1.0f,0.0f,0.0f, 1.0f);
+        }
     }
 
     @Override

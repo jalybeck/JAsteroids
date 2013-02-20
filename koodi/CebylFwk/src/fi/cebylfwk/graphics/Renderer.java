@@ -16,6 +16,21 @@ public interface Renderer {
      * @param bpp bits per pixel
      */
     public void initialize(int resX, int resY, int bpp, boolean fullScreen, boolean vSync) throws Exception;
+    /**
+     * Draws image on 2D screen.
+     *
+     * @param x position on 2D screen
+     * @param y position on 2D screen
+     * @param xScale x scaling factor
+     * @param yScale y scaling factor
+     * @param rotAngle rotation angle in degrees 
+     * @param img renderable image
+     * @param txStart x start position in texture between 0.0f - 1.0f
+     * @param txEnd x end position in texture between 0.0f - 1.0f
+     * @param tyStart y start position in texture between 0.0f - 1.0f
+     * @param tyEnd y end position in texture between 0.0f - 1.0f
+     */
+    public void drawImage(float x, float y, float xScale, float yScale, float rotAngle, float txStart, float txEnd, float tyStart, float tyEnd, Image img);
     
     /**
      * Draws image on 2D screen.
@@ -54,6 +69,17 @@ public interface Renderer {
      * @param img renderable image
      */
     public void drawFullScreenImage(Image img);
+    
+    /**
+     * Draws line rectangle with given color.
+     * 
+     * @param x x position of upper left corner
+     * @param y y position of upper left corner
+     * @param width width of x side
+     * @param height height of y side
+     * @param col
+     */
+    public void drawLineRectangle(float x, float y, float width, float height, Color col);
     
     /**
      * Clears screen with given color and alpha.

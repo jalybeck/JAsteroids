@@ -50,24 +50,18 @@ public interface Entity extends Renderable, Updateable, Resource {
     public void setPosition(Point2D pos);
     public Point2D getPosition();
     
-    public void move(Vector2D addVec);
+    public void move(float x, float y);
     
-    public void scale(Vector2D scale);
-    public Vector2D getScale();
+    public void scale(Point2D scale);
+    public Point2D getScale();
+    
+    public void setRotation(double angle);
+    public double getRotation();
     
     public void setZIndex(int index);
     public int getZIndex();
     
     public void reset();
-    
-    /**
-     * Collision check of the entities.
-     * There should be logic what happens when
-     * entity given as parameter collides with this entity.
-     * 
-     * @param e Entity which collides with this one.
-     */
-    public void onCollision(Entity e);
     
     public Shape2D getShape();
 }

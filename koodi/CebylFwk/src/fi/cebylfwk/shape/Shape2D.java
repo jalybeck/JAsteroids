@@ -29,5 +29,5 @@ public interface Shape2D extends Renderable {
     public void scale(float x, float y);
     
     /** Bounding object */
-    public Rectangle getBoundingRectangle();
+    public BoundingObject getBoundingObject();
 }

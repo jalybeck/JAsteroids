@@ -35,7 +35,6 @@ public class ShipEntity extends BoundaryCheckedEntity implements  UserControllab
     private String name;
     private boolean active;
     private boolean visible;
-    //private Image img;
     private Quad shape;
     private Point2D position;
     private float rotation;
@@ -45,7 +44,6 @@ public class ShipEntity extends BoundaryCheckedEntity implements  UserControllab
     public ShipEntity(URL imagePath) throws IOException {
         super();
         name = "ShipEntity";
-        //img = new GameImage(imagePath);
         shape = new Quad();
         shape.setImage(new GameImage(imagePath), true);
         position = new Point2D(0,0);
@@ -83,7 +81,8 @@ public class ShipEntity extends BoundaryCheckedEntity implements  UserControllab
 
     @Override
     public void setPosition(Point2D position) {
-        this.position = position;
+        this.position.set(position);
+        shape.setPosition((float)position.getX(), (float)position.getY());
     }
 
     @Override
@@ -92,15 +91,15 @@ public class ShipEntity extends BoundaryCheckedEntity implements  UserControllab
     }
 
     @Override
-    public void move(Vector2D vector2D) {
+    public void move(float x, float y) {
     }
 
     @Override
-    public void scale(Vector2D vector2D) {
+    public void scale(Point2D vector2D) {
     }
 
     @Override
-    public Vector2D getScale() {
+    public Point2D getScale() {
         return null;
     }
 
@@ -119,6 +118,10 @@ public class ShipEntity extends BoundaryCheckedEntity implements  UserControllab
 
     @Override
     public void onCollision(Entity entity) {
+        if(entity instanceof AsteroidEntity) {
+            super.onCollision(entity);
+            setActive(false);
+        }
     }
 
     @Override
@@ -128,9 +131,12 @@ public class ShipEntity extends BoundaryCheckedEntity implements  UserControllab
 
     @Override
     public void render(Renderer renderer, long l) {
-        shape.setPosition((float)position.getX(), (float)position.getY());
+        
+        
         shape.rotate(rotation);
+        //shape.scale(1, 1);
         shape.render(renderer, l);
+        super.render(renderer,l);
     }
     
     @Override
@@ -186,5 +192,19 @@ public class ShipEntity extends BoundaryCheckedEntity implements  UserControllab
 
     @Override
     public void moveDown(double d) {
+    }
+    
+    @Override
+    public void setRotation(double d) {
+
+    }
+
+    @Override
+    public double getRotation() {
+        return rotation;
+    }
+    
+    public float getCurSpeed() {
+        return (float)this.curSpeed.mag();
     }
 }

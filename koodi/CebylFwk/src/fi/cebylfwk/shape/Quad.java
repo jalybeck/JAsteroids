@@ -25,19 +25,18 @@ public class Quad implements Shape2D {
         img = null;
         rotationAngle = 0;
         pos = new Point2D(0,0);
-        scale = new Point2D(50, 50);
+        scale = new Point2D(0, 0);
         
         color = new Color(1,1,1,1);
         
         boundingRectangle = new Rectangle((float)this.pos.getX(), (float)this.pos.getY(), (float)this.scale.getX() * 0.8f,
-                    (float)this.scale.getY() * 0.8f);
+                    (float)this.scale.getY()* 0.8f);
     }
     
     
     private void scaleToImageSize() {
         if(this.img != null) {
-            this.scale.setX(this.img.getWidth());
-            this.scale.setY(this.img.getHeight());
+            this.scale(1,1);
         }
     }
 
@@ -50,30 +49,31 @@ public class Quad implements Shape2D {
         this.pos.setY(y);
         
         // TODO: calculate xScale and yScale according to rotated object
-        this.boundingRectangle.setBoundaries((float)this.pos.getX(), (float)this.pos.getY(), (float)this.scale.getX() * 0.8f,
-                    (float)this.scale.getY() * 0.8f);
+        this.boundingRectangle.setBoundaries((float)this.pos.getX(), (float)this.pos.getY(), (float)this.scale.getX()* 0.8f,
+                    (float)this.scale.getY()* 0.8f);
     }
 
     public void scale(float x, float y) {
-        this.scale.setX(x);
-        this.scale.setY(y);
+        this.scale.setX(this.img.getWidth() * x);
+        this.scale.setY(this.img.getHeight() * y);
 
         // TODO: calculate xScale and yScale according to rotated object
-        this.boundingRectangle.setBoundaries((float)this.pos.getX(), (float)this.pos.getY(), (float)this.scale.getX() * 0.8f,
-                    (float)this.scale.getY() * 0.8f);        
+        this.boundingRectangle.setBoundaries((float)this.pos.getX(), (float)this.pos.getY(), (float)this.scale.getX()* 0.8f,
+                    (float)this.scale.getY()* 0.8f);        
     }
 
     public void setColor(float r, float g, float b, float a) {
         this.color.setRGBA(r, g, b, a);
     }
     
-    public Rectangle getBoundingRectangle() {
+    public Rectangle getBoundingObject() {
         return this.boundingRectangle;
     }
 
     @Override
     public void render(Renderer r,long time) {
-        r.drawImage((float)pos.getX(), (float)pos.getY(),rotationAngle,this.img);
+        r.drawImage((float)pos.getX(), (float)pos.getY(), (float)scale.getX(), (float)scale.getY(), rotationAngle,this.img);
+        //r.drawImage((float)pos.getX(), (float)pos.getY(), rotationAngle,this.img);
     }
 
     @Override

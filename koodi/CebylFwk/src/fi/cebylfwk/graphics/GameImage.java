@@ -30,6 +30,10 @@ public class GameImage implements Image {
         
         img = ImageIO.read(url);
     }
+    
+    public GameImage(BufferedImage img)  {
+        this.img = img;
+    }
 
     public int getWidth() {
         return img.getWidth();
@@ -81,5 +85,11 @@ public class GameImage implements Image {
             default:
                 return ColorFormat.NOT_SUPPORTED;
         }
+    }
+
+    @Override
+    public Image getImageRegion(int x, int y, int width, int height) {
+        return new GameImage(img.getSubimage(x, y, width,height));
+        
     }
 }

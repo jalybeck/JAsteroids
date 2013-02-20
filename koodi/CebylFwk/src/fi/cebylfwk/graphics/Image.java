@@ -26,4 +26,15 @@ public interface Image extends Resource {
     int getBytes();
     
     ColorFormat getColorFormat();
+    
+    /**
+     * Returns new Image from given (x,y) position and width and height of current image.
+     * 
+     * @param x position in image
+     * @param y position in image
+     * @param width how many pixels in x direction
+     * @param height how many pixels in y direction
+     * @return Image
+     */
+    Image getImageRegion(int x, int y, int width, int height);
 }
