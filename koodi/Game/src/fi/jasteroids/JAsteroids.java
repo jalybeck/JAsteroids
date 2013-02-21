@@ -19,8 +19,15 @@ import java.io.IOException;
  */
 
 public class JAsteroids extends GameLWJGL {
-    public JAsteroids() {
+    private int xRes, yRes, bpp;
+    private boolean vSync;
+    public JAsteroids(int xRes, int yRes, int bpp, boolean vSync) {
         super();
+        
+        this.xRes = xRes;
+        this.yRes = yRes;
+        this.bpp = bpp;
+        this.vSync = vSync;
     }
     
     /**
@@ -30,7 +37,7 @@ public class JAsteroids extends GameLWJGL {
      * @throws Exception
      */
     public void initialize() throws IOException, Exception {
-        this.initialize(1280, 720, 32, false, "JAsteroids", 60, true);
+        this.initialize(this.xRes, this.yRes, this.bpp, false, "JAsteroids", 60, this.vSync);
         
         this.addState(new IntroState("First State"));
         this.addState(new MainGameState("Second State"));
@@ -38,7 +45,7 @@ public class JAsteroids extends GameLWJGL {
     }
     
     public static void main(String[] args) throws IOException, Exception {
-        JAsteroids asteroids = new JAsteroids();
+        JAsteroids asteroids = new JAsteroids(Integer.parseInt(args[0]), Integer.parseInt(args[1]), Integer.parseInt(args[2]), Boolean.parseBoolean(args[3]));
         
         asteroids.initialize();
         
