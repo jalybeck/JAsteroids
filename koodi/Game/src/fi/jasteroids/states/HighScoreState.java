@@ -37,6 +37,9 @@ import org.lwjgl.input.Keyboard;
  * @see         State
  */
 public class HighScoreState extends State {
+    /**
+     * Inner class which is used for sortin scores. 
+     */
     private class Score {
         public Score(String name, int score, boolean current) {
             this.name = name;
@@ -47,25 +50,40 @@ public class HighScoreState extends State {
         int score;
         boolean current;
     }
+    /** Caret On character. */
     private final char CARET_ON;
+    /** Caret off character. */
     private final char CARET_OFF;
+    /** Maximum number of names in highscore list. */
     private final int  MAX_NAMES_IN_LIST;
+    /** High score filename. */
     private final String HIGH_SCORE_FILENAME;
+    /** Maximun name length. */
     private final int  MAX_NAME_LENGTH;
+    /** Score length. */
     private final int  SCORE_LENGTH;
     
+    /** Font to be used. */
     private Font verdanaFont;
+    /**Players name. */
     private String playerName;
-
+    
+    /** Current caret. */
     private char curCaret;
+    /**Score entites are in this list. */
     private List<Score> highScoreList;
+    /** Caret blink time in nanos. */
     private long caretBlinkTime;
     
+    /** Players score. */
     private String playerScore;
     
+    /** High score text shown on screen. */
     private ImageEntity highScoreText;
+    /** High score text update movement. */
     private int updateMovement;
     
+    /** High score list Y position on screen. */
     private float scoreYPosition;
     
     public HighScoreState(String name) throws IOException {

@@ -45,24 +45,36 @@ public class MainGameState extends State {
     
     /** Shot delay in seconds. */
     private float shotDelayInSeconds = 0.75f;
+    /** Last shot time in nanoseconds. */
     private long lastShotTimeNanos;
     
     //Game entities
+    /** Player entity. */
     private ShipEntity player;
+    /** Currently active asteroids in game. */
     private List<AsteroidEntity> activeAsteroids;
+    /** Currently inactive asteroids in game. */
     private List<AsteroidEntity> inactiveAsteroids;
 
     //GameOver variables
+    /** is game over? */
     private boolean gameOver;
+    
+    /** Delay how long game screen is shown after game over state is activated. */
     private final float gameOverDelayInSeconds = 3.0f;
+    /** Gamve over start time in nanoseconds. */
     private long gameOverStartNanos;
 
     //HUD variables
+    /** Score image entity */
     private ImageEntity scoreEntity;
+    /** Number used for scores. */
     private HashMap<String, ImageEntity> numberEntityMap;
+    /** Currently active digits in score. */
     private HashMap<String, ImageEntity> scoreDigits;
     
     //Background image
+    /** Background image. */
     ImageEntity bg;
     
     public MainGameState(String name) throws IOException {
