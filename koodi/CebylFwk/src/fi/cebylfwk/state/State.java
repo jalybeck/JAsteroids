@@ -42,7 +42,7 @@ public abstract class State implements Renderable, Updateable {
      * @param parameters this should be populated by previous state so states can pass parameters from previous to next.
      * @see StateHandler
      */
-    public abstract void initialize(Map<String, String> parameterss);
+    public abstract void initialize(Map<String, String> parameters);
 
     public State(String name) {
         this();
@@ -56,7 +56,12 @@ public abstract class State implements Renderable, Updateable {
     public String getName() {
         return name;
     }
-
+    
+    /**
+     * Adds entity to this state.
+     * 
+     * @param e
+     */
     public void addEntity(Entity e) {
         this.em.addEntity(e);
     }
@@ -81,7 +86,10 @@ public abstract class State implements Renderable, Updateable {
         processKeyboardInput();
         em.update(time);
     }
-
+    
+    /**
+     * Releases all the resources.
+     */
     public void release() {
         em.clear();
     }
@@ -93,11 +101,21 @@ public abstract class State implements Renderable, Updateable {
     public int getFPS() {
         return FPS;
     }
-
+    
+    
+    /**
+     * Converts nanoseconds to seconds.
+     * 
+     * @param timeInNanos
+     * @return Seconds
+     */
     protected float fromNanosToSeconds(long timeInNanos) {
         return timeInNanos / 1000000000.0f;
     }
     
+    /**
+     * Exhaust keyboard buffer so there is no keyboard presses in buffer after this methdo call.
+     */
     protected void exhaustKeyboardBuffer() {
         //Exhaust keyboard buffer by looping thru it
         while(Keyboard.next()) {
@@ -106,6 +124,9 @@ public abstract class State implements Renderable, Updateable {
     }
     
     public abstract Map<String,String> getParametersForNextState();
-
+    
+    /**
+     * Keyboard handling.
+     */
     public abstract void processKeyboardInput();
 }

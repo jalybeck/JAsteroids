@@ -19,19 +19,18 @@ import java.awt.GraphicsEnvironment;
 import org.lwjgl.BufferUtils;
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL14;
-import org.lwjgl.util.glu.GLU;
 
 
 /**
  * A TrueType font implementation originally for Slick, edited for Bobjob's Engine
  *
- * @original author James Chambers (Jimmy)
- * @original author Jeremy Adams (elias4444)
- * @original author Kevin Glass (kevglass)
- * @original author Peter Korzuszek (genail)
+ * @author Original author James Chambers (Jimmy)
+ * @author Original author Jeremy Adams (elias4444)
+ * @author Original author Kevin Glass (kevglass)
+ * @author Original author Peter Korzuszek (genail)
  *
- * @new version edited by David Aaron Muhar (bobjob)
- * @new added to be part of CebylFwk 2D game engine by Jari Lybeck (Pharaffin)
+ * @author New version edited by David Aaron Muhar (bobjob)
+ * @author added to be part of CebylFwk 2D game engine by Jari Lybeck (Pharaffin)
  */
 public class FontLWJGL implements fi.cebylfwk.graphics.Font {
 	public final static int
@@ -100,6 +99,8 @@ public class FontLWJGL implements fi.cebylfwk.graphics.Font {
 	public FontLWJGL(Font font, boolean antiAlias) {
 		this( font, antiAlias, null );
 	}
+        
+        @Override
 	public void setCorrection(boolean on) {
 		if (on) {
 			correctL = 2;
@@ -109,6 +110,7 @@ public class FontLWJGL implements fi.cebylfwk.graphics.Font {
 			correctR = 0;
 		}
 	}
+        
 	private BufferedImage getFontImage(char ch) {
 		// Create a temporary image to extract the character's size
 		BufferedImage tempfontImage = new BufferedImage(1, 1,

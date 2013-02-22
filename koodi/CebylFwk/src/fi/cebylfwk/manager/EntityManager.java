@@ -76,6 +76,11 @@ public class EntityManager extends ResourceManager<Entity> implements Renderable
         }        
     }
     
+    /**
+     * Checks collision against all entities.
+     * 
+     * @param e Collidible object which is checked against.
+     */
     private void checkCollisionAgainstAllEntities(Collidible e) {
         for (Collidible d : collidibles) {
             Entity collEntity = (Entity) d;
@@ -89,6 +94,13 @@ public class EntityManager extends ResourceManager<Entity> implements Renderable
         }        
     }
     
+    /**
+     * Checks collision between two entities.
+     * 
+     * @param a
+     * @param b
+     * @return
+     */
     private boolean checkCollisionBetween(Entity a, Entity b) {
         Shape2D d = a.getShape();
         Shape2D e = b.getShape();
@@ -96,6 +108,9 @@ public class EntityManager extends ResourceManager<Entity> implements Renderable
         return d.getBoundingObject().intersects(e.getBoundingObject());
     }
     
+    /**
+     *  Sorts entities by zindex property.
+     */
     private void sortEntitiesByZIndex() {
             Collections.sort(this.getResourceList(), new Comparator<Entity>() {
 

@@ -58,10 +58,5 @@ public class Rectangle implements BoundingObject<Rectangle> {
         
         return sb.toString();
     }
-/*
-    @Override
-    public Rectangle getBoundingObject() {
-        return this;
-    }*/
 }
 

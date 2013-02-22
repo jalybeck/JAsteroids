@@ -13,4 +13,9 @@ ma 04.02.2013 3.5h  Pelikirjaston koodausta. Sekvenssikaavioiden suunnittelua.
 ti 05.02.2013 4.5h  Sekvenssikaavioiden suunnittelua. Pelikirjaston hienoista refaktorointia sekä konkreettisten luokkien tekemistä.
 pe 08.02.2013 2.5h  Pelimoottorin koodausta.
 su 10.02.2013 3.5h  JAsteroids pelin koodaamista Pelimoottori koodin refaktorointia.
-ma 11.02.2013 5.0h  JAsteroids pelin koodaamista, luokkakaavion päivittämistä, sekvenssi kaavion päivittämistä, JavaDocien päivittämistä.  
+ma 11.02.2013 5.0h  JAsteroids pelin koodaamista, luokkakaavion päivittämistä, sekvenssi kaavion päivittämistä, JavaDocien päivittämistä.
+to 14.02.2013 3.5h  JAsteroids pelin koodaamista. Pelimoottori koodin refaktorointia.
+ti 20.02.2013 6.5h  JAsteroids pelin koodaamista.
+ke 21.02.2013 7.0h  JAsteroids pelin koodaamista. Pelimoottori koodin refaktorointia.
+pe 22.02.2013 3.5h  JavaDocin päivitys ja generointi. Koodin läpikäyntiä deadlineä varten.
+

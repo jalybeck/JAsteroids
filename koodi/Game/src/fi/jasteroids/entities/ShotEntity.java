@@ -13,6 +13,13 @@ import java.io.IOException;
 
 import java.net.URL;
 
+/**
+ * ShotEntity presents shot which player ship shoots.
+ *
+ * @author      Jari Lybeck
+ * @version     %I%, %G%
+ * @see         BoundaryCheckedEntity
+ */
 public class ShotEntity extends BoundaryCheckedEntity {
     private final float baseShotSpeed = 4f;
     private final float shotStartPositionOffset = 40f;
@@ -62,9 +69,7 @@ public class ShotEntity extends BoundaryCheckedEntity {
     
     @Override
     public void render(Renderer renderer, long deltaTime) {
-
-        shape.rotate((float)rotation);
-        //shape.scale(1, 1);
+        shape.rotate(rotation);
         shape.render(renderer, deltaTime);
         super.render(renderer,deltaTime);
     }

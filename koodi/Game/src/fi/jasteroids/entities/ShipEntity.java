@@ -23,7 +23,8 @@ import org.lwjgl.opengl.Display;
  *
  * @author      Jari Lybeck
  * @version     %I%, %G%
- * @see         Entity, UserControllable
+ * @see         BoundaryCheckedEntity
+ * @see         UserControllable
  */
 
 public class ShipEntity extends BoundaryCheckedEntity implements  UserControllable {
@@ -131,10 +132,7 @@ public class ShipEntity extends BoundaryCheckedEntity implements  UserControllab
 
     @Override
     public void render(Renderer renderer, long l) {
-        
-        
         shape.rotate(rotation);
-        //shape.scale(1, 1);
         shape.render(renderer, l);
         super.render(renderer,l);
     }

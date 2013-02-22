@@ -69,7 +69,7 @@ public class Vector2D {
      * Calculates the dot product of the two vectors.
      * 
      * @param vec
-     * @return
+     * @return Dot production of two vectors.
      */
     public double dot(Vector2D vec) {
         return this.x * vec.x + this.y * vec.y;
@@ -139,7 +139,6 @@ public class Vector2D {
      * Create unit length direction vector
      *
      * @param angle as degrees
-     * @return unit length direction vector on xy plane
      */
     public void setDirectionByAngle(double angle) {
         double radians = Math.toRadians(angle);

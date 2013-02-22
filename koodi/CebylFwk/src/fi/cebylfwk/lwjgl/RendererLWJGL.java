@@ -125,16 +125,7 @@ public class RendererLWJGL implements Renderer {
         float txEnd = 1.0f;
         float tyStart = 0.0f;
         float tyEnd = 1.0f;
-        /*
-        GL11.glTexCoord2f(0.0f, 0.0f); 
-        GL11.glVertex2f(-1.0f, 1.0f);
-        GL11.glTexCoord2f(0.0f, 1.0f);
-        GL11.glVertex2f(-1.0f, -1.0f);
-        GL11.glTexCoord2f(1.0f, 1.0f);
-        GL11.glVertex2f(1.0f, -1.0f);
-        GL11.glTexCoord2f(1.0f, 0.0f);
-        GL11.glVertex2f(1.0f, 1.0f);
-        */
+        
         internalDrawImage(x, y, img.getWidth(), img.getHeight(), 0, img, true, false, txStart, txEnd, tyStart, tyEnd);
     }
     
@@ -265,6 +256,14 @@ public class RendererLWJGL implements Renderer {
         
     }
     
+    /**
+     * Used internally render the square.
+     * 
+     * @param xStart x start position of texture coordinate.
+     * @param xEnd   x ending position of texture coordinate.
+     * @param yStart y start position of texture coordinate.
+     * @param yEnd   y ending position of texture coordinate.
+     */
     private void internalRenderSquare(float xStart, float xEnd, float yStart, float yEnd) {
         GL11.glBegin(GL11.GL_QUADS);
         
@@ -326,6 +325,7 @@ public class RendererLWJGL implements Renderer {
         GL11.glBindTexture(GL11.GL_TEXTURE_2D, 0);
     }
     
+    @Override
     public void drawLineRectangle(float x, float y, float width, float height, Color col) {
         float left = width * -1.0f;
         float top = height * 1.0f;
@@ -340,7 +340,6 @@ public class RendererLWJGL implements Renderer {
         GL11.glLoadIdentity();
         
         GL11.glTranslatef(0.0f + x,Display.getDisplayMode().getHeight() - y, 0.0f);
-        //GL11.glScalef(this.xScale, this.yScale, 1.0f);
         
         GL11.glDisable(GL11.GL_TEXTURE_2D);
         GL11.glBegin(GL11.GL_LINE_LOOP);
@@ -350,7 +349,7 @@ public class RendererLWJGL implements Renderer {
         GL11.glVertex2f(right, bottom);
         GL11.glVertex2f(right, top);
         GL11.glEnd();
-        //GL11.glColor3f(0f,0f,0f);
+
         GL11.glEnable(GL11.GL_TEXTURE_2D);
         
         GL11.glPopMatrix();
@@ -375,14 +374,9 @@ public class RendererLWJGL implements Renderer {
         this.clear(color.getRed(),color.getGreen(),color.getBlue(),color.getAlpha());
     }
     
+    @Override
     public void drawString(String str, int xPos, int yPos, Font font, Color color) {
         
-        //this.setDepthTest(false);
-        //this.setShaderProgram(null);
-
-        //this.setCulling(false);
-        
-        //GL11.glEnable(GL11.GL_BLEND);
         GL11.glPushAttrib(GL11.GL_CURRENT_BIT);
         GL11.glBlendFunc(GL11.GL_ONE,GL11.GL_ONE);
 

@@ -44,6 +44,12 @@ public class Point2D {
         return y;
     }
     
+    /**
+     * Adds x and y to this objects x and y.
+     * 
+     * @param x
+     * @param y
+     */
     public void addTo(double x, double y) {
         this.x += x;
         this.y += y;

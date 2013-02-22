@@ -154,6 +154,14 @@ public class HighScoreState extends State {
         }
     }
     
+    /**
+     * Inserts prefix padding to string.
+     * 
+     * @param str
+     * @param prefix
+     * @param count
+     * @return
+     */
     private String padString(String str, char prefix, int count) {
         StringBuffer sb = new StringBuffer();
         
@@ -166,6 +174,15 @@ public class HighScoreState extends State {
         return sb.toString();
     }
     
+    /**
+     * Creates and formats score line shown on screen.
+     * 
+     * @param lineNum
+     * @param playerName
+     * @param playerScore
+     * @param showCaret
+     * @return
+     */
     private String createScoreLine(int lineNum,String playerName, String playerScore, boolean showCaret) {
         StringBuffer sb = new StringBuffer();
         int showCaret_num = showCaret ? -1 : 0;
@@ -190,7 +207,12 @@ public class HighScoreState extends State {
         
         
     }
-    
+    /**
+     * Restricts player name to given length.
+     * 
+     * @param charToAdd
+     * @param length
+     */
     private void checkPlayerNameLength(char charToAdd,int length) {
         if(playerName.length() < length) {
             playerName += charToAdd;
@@ -237,6 +259,9 @@ public class HighScoreState extends State {
         
     }
     
+    /**
+     * Sorts high score list so highest is first.
+     */
     private void sortScoreList() {
         Collections.sort(highScoreList, new Comparator<Score>() {
 
@@ -251,6 +276,11 @@ public class HighScoreState extends State {
         });
     }
     
+    /**
+     * Adds empty lines to high score list.
+     * Maximum is 10.
+     * 
+     */
     private void addEmptyLinesToScoreList() {
         int listSize = highScoreList.size();
         for(int i=0;i< MAX_NAMES_IN_LIST - listSize;i++) {
@@ -258,6 +288,11 @@ public class HighScoreState extends State {
         }        
     }
     
+    /**
+     * Loads high score list from file.
+     * 
+     * @param fileName
+     */
     private void loadHighScoreFile(String fileName) {
         BufferedReader br = null;
 
@@ -283,6 +318,11 @@ public class HighScoreState extends State {
        
     }
     
+    /**
+     * Saves high scores to file.
+     * 
+     * @param fileName
+     */
     private void saveHighScoreFile(String fileName) {
         FileWriter fw = null;
 

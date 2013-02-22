@@ -41,19 +41,23 @@ public class GameImage implements Image {
     public GameImage(BufferedImage img)  {
         this.img = img;
     }
-
+    
+    @Override
     public int getWidth() {
         return img.getWidth();
     }
-
+    
+    @Override
     public int getHeight() {
         return img.getHeight();
     }
-
+    
+    @Override
     public int getBytes() {
         return img.getData().getDataBuffer().getSize();
     }
     
+    @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
         
@@ -64,19 +68,22 @@ public class GameImage implements Image {
         
         return sb.toString();
     }
-
+    
+    @Override
     public ByteBuffer getResourceData() {
         ByteBuffer buf = ByteBuffer.allocateDirect(img.getData().getDataBuffer().getSize());
         buf.put(((DataBufferByte)img.getRaster().getDataBuffer()).getData());
         buf.rewind();
         return buf;
     }
-
+    
+    @Override
     public void release() {
         this.img = null;
         this.url = null;
     }
-
+    
+    @Override
     public ColorFormat getColorFormat() {
         switch(this.img.getType()) {
             case java.awt.image.BufferedImage.TYPE_3BYTE_BGR:

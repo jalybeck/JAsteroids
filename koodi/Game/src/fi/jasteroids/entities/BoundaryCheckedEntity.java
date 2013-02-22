@@ -17,10 +17,12 @@ import org.lwjgl.opengl.Display;
  * and wrap entity over to other side of the screen.
  * All the JAsteroids game entities which should be wrapped over boundaries
  * should extend this class.
+ * Also collision code is put here.
  *
  * @author      Jari Lybeck
  * @version     %I%, %G%
  * @see         Entity
+ * @see         Collidible
  */
 public abstract class BoundaryCheckedEntity implements Entity, Collidible {
     private Color rectangleColor;
@@ -32,6 +34,10 @@ public abstract class BoundaryCheckedEntity implements Entity, Collidible {
         rectangleColor = new Color(1.0f, 0.0f, 0.0f,1.0f);
         hasCollision = false;
     }
+    
+    /**
+     * Checks entity boundaries, so the entity will wrap over to other side of the screen.
+     */
     private void checkBoundaries() {
         Point2D entityPos = this.getPosition();
         float entityHeight = ((Rectangle)this.getShape().getBoundingObject()).getHeight();
@@ -52,6 +58,7 @@ public abstract class BoundaryCheckedEntity implements Entity, Collidible {
         }
         this.setPosition(entityPos);
     }
+    
     @Override
     public void setActive(boolean b) {
     }
@@ -113,7 +120,6 @@ public abstract class BoundaryCheckedEntity implements Entity, Collidible {
 
     @Override
     public void onCollision(Entity entity) {
-        //System.out.println("Collision "+entity+"!");
         hasCollision = true;
     }
 

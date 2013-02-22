@@ -1,0 +1,13 @@
+fi.cebylfwk
+fi.cebylfwk.component
+fi.cebylfwk.graphics
+fi.cebylfwk.lwjgl
+fi.cebylfwk.manager
+fi.cebylfwk.math
+fi.cebylfwk.shape
+fi.cebylfwk.state
+test.fi.cebylfwk.graphics
+test.fi.cebylfwk.manager
+test.fi.cebylfwk.math
+test.fi.cebylfwk.shape
+test.fi.cebylfwk.state

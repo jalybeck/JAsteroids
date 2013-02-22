@@ -1,0 +1,54 @@
+JAsteroids käyttöohjeet
+-----------------------
+
+1. Pelin käynistys
+
+Peli vaatii JDK/JRE 1.6.0_35 tai uudemman Java 6 version.
+Peliä ei ole testattu Java 7:llä, joten voi olla hyvin todennäköistä, että se ei sillä toimi.
+
+Pelin ajettava .jar tiedosto sijaitsee repositiorion juuresta alkaen:
+JAsteroids/koodi/Game/deploy hakemistossa.
+
+Hakemistoon on luotu Windows ympäristöä varten JAsteroids.cmd tiedosto, joka käynistää pelin 1280x720x32 resoluutiossa.
+JAsteroids.cmd tiedoston resoluutio parametreja voi päivittää, jos kyseinen vakioresoluutio ei toimi.
+Jos ohjelman käynistys parametrit ovat väärin seuraavanlainen ilmoitus tulee komentokehotteeseen:
+
+JAsteroids v.0.9 (c) Jari Lybeck
+Usage: java -jar -Djava.library.path=lib/lwjgl-2.8.3/native/<os_dir> -jar JAsteroids <xres> <yres> <bpp> <vSync>
+ <os_dir>: windows, macosx, linux
+ <xres>: x resolution
+ <yres>: y resolution
+ <bpp>: bits per pixel. 16,24,32
+ <vSync>: is Vertical Sync enabled. true|false
+
+2. Pelaaminen
+
+Pelaaminen tapahtuu seuraavilla näppäimistön näppämillä:
+
+W : kiihdyttää avaruusalusta sen hetkiseen suuntaan
+A : pyörittää avaruusalusta vasemmalle
+D : pyörittää avaruusalusta oikealle
+SPACE : ampuu
+- : vähentää ampumisviivettä
++ : lisää ampumisviivettä
+
+Peliin ei ole kehitty minkäälaista loppua eli peli voi käytännössä jatkua rajattomasti.
+Kun pelaaja on tuhonnut kaikki asteroidit uudet asteroidit arvotaan näytölle ja pelaaja siirretään keskelle ruutua.
+Pelaajan osuessa asteroidiin peli loppuu ja 'High score' lista tulee näkyville.
+
+3. Tiedetyt bugit
+
+-Jos leveys suuntainen resoluutio on pienempi kuin 1280 niin osa näytön objekteista ei skaalaudu oikein,
+ jolloin osa niistä jää piiloon
+
+-Pisteiden ylittäessä 99999 pisteiden päivitys näytöllä loppuu vaikka ne taustalla jatkuvat.
+
+-Objektien (asteroidit, ammukset, alus) mennessä pelinäytön ulkopuolelle ne eivät 'klippaudu' oikein.
+ Eli voi olla hetkiä kun peliobjekti on puoliksi ulkona näytöltä eikä näy toisella puolella hetkeen.
+
+-High score näytöllä tietyillä koneilla osa ääkkösistä ei näkynyt oikein.
+
+-High score näytöllä osa näppäimistä tuottaa tyhjiä merkkejä.
+
+-Kyseisessä LWJGL:n versiossa 2.8.3 ei ole linux natiivi kirjastoja, joten linuxilla peli ei voi toimia.
+ Uudemmassa versiossa 2.8.5 tämä näyttäisi olevan.

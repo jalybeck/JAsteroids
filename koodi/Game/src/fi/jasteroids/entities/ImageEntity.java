@@ -14,6 +14,13 @@ import java.net.URL;
 
 import java.nio.ByteBuffer;
 
+/**
+ * ImageEntity should be used to draw image with position, size and rotation.
+ *
+ * @author      Jari Lybeck
+ * @version     %I%, %G%
+ * @see         Entity
+ */
 public class ImageEntity implements Entity {
     private String name;
     private boolean active;
@@ -44,6 +51,9 @@ public class ImageEntity implements Entity {
         initialize();
     }
     
+    /**
+     * All the initialization code should go here.
+     */
     private void initialize() {
         this.name = "ImageEntity";
 

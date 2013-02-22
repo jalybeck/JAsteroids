@@ -85,12 +85,8 @@ public class MainGameState extends State {
         initializeNumberEntities();
         
         bg = new ImageEntity(this.getClass().getResource("data/space_bg.jpg"));
-       // bg.getScale().addTo(1000, 0);
-        //bg.setZIndex(-1000);
         
         this.setClearScreen(false);
-        //this.addEntity(bg);
-        
     }
     
     /**
@@ -166,9 +162,6 @@ public class MainGameState extends State {
         if (!gameOver) {
             if (Keyboard.isKeyDown(Keyboard.KEY_W)) {
                 player.moveUp(0.1);
-                //Vector2D dir = new Vector2D();
-                //dir.setDirectionByAngle(player.getRotation());
-                //bg.getPosition().addTo(-dir.getX() * 0.25f, dir.getY()*0.25f);
             }
             if (Keyboard.isKeyDown(Keyboard.KEY_A)) {
                 player.moveLeft(1.0);
@@ -207,6 +200,7 @@ public class MainGameState extends State {
         GL11.glCullFace(GL11.GL_BACK);
         GL11.glEnable(GL11.GL_CULL_FACE);
     }
+    
     /**
      * Creates asteroids somewhat to random positions.
      * If numMin and numMax are exactly same then number of asteroids are not randomized.

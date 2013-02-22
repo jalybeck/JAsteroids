@@ -11,7 +11,13 @@ import fi.cebylfwk.shape.Shape2D;
 import java.io.IOException;
 
 import java.net.URL;
-
+/**
+ * AsteroidEntity is representation of asteroid used in the game.
+ *
+ * @author      Jari Lybeck
+ * @version     %I%, %G%
+ * @see         BoundaryCheckedEntity
+ */
 public class AsteroidEntity extends BoundaryCheckedEntity {    
     private String name;
     private boolean active;

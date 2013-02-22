@@ -33,13 +33,19 @@ public class Quad implements Shape2D {
                     (float)this.scale.getY()* 0.8f);
     }
     
-    
+    /**
+     *  Scales quad to be same size as image assigned to this quad.
+     */
     private void scaleToImageSize() {
         if(this.img != null) {
             this.scale(1,1);
         }
     }
-
+    /**
+     * Sets rotation angle of object.
+     * 
+     * @param angle in degrees
+     */
     public void rotate(float angle) {
         this.rotationAngle = angle;
     }

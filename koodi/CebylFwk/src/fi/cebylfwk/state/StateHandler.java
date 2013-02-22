@@ -26,6 +26,11 @@ public class StateHandler {
         previousState = null;
     }
     
+    /**
+     * Adds state to handler.
+     * 
+     * @param state
+     */
     public void addState(State state) {
         states.add(state);
     }
