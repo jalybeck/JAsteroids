@@ -264,7 +264,6 @@ public class HighScoreState extends State {
     @Override
     public void render(Renderer r, long time) {
         super.render(r, time);
-        
         int i = 1;
         for(Score sc : highScoreList) {
             boolean drawCaret = false;

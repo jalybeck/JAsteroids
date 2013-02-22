@@ -27,7 +27,7 @@ public class Color {
     private float alpha;
     
     public Color(float r,float g, float b, float a) {
-        setRGBA(red,green,blue,alpha);
+        setRGBA(r,g,b,a);
     }
     
     public void setRGBA(float r, float g, float b, float a) {
