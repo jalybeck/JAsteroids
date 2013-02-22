@@ -38,9 +38,12 @@ import org.lwjgl.opengl.GL11;
  */
 public class MainGameState extends State {
     //Game statistics variables
+    /** Level number. */
     private int level;
+    /** Current score. */
     private int score;
-
+    
+    /** Shot delay in seconds. */
     private float shotDelayInSeconds = 0.75f;
     private long lastShotTimeNanos;
     

@@ -22,10 +22,19 @@ import java.nio.ByteBuffer;
  * @see         Entity
  */
 public class FullScreenImageEntity implements Entity {
+    /** Name of the entity. */
     private String name;
+    
+    /** Is entity active. */
     private boolean active;
+    
+    /** IS entity visible. */
     private boolean visible;
+    
+    /** Image which will be drawn. */
     private Image img;
+    
+    /** ZIndex. Larger the number more top this item will be drawn. */
     private int zIndex;
     
     public FullScreenImageEntity(URL imagePath) throws IOException {

@@ -7,7 +7,10 @@ package fi.cebylfwk.math;
  * @version     %I%, %G%
  */
 public class Point2D {
-    private double x,y;
+    /** X coordinate. */
+    private double x;
+    /** Y coordinate. */
+    private double y;
     
     public Point2D(double x, double y) {
         this.x = x;

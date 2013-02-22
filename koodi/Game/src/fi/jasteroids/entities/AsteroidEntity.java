@@ -18,16 +18,35 @@ import java.net.URL;
  * @version     %I%, %G%
  * @see         BoundaryCheckedEntity
  */
-public class AsteroidEntity extends BoundaryCheckedEntity {    
+public class AsteroidEntity extends BoundaryCheckedEntity {  
+    /** Name of the entity. */
     private String name;
+    
+    /** Is entity active. */
     private boolean active;
+    
+    /** IS entity visible. */
     private boolean visible;
+    
+    /** Visible shape of the entity. */
     private Quad shape;
+    
+    /** Position of the entity. */
     private Point2D position;
+    
+    /** Rotation angle in degrees on xy plane. */
     private float rotation;
+    
+    /** Direction vector of the entity. */
     private Vector2D direction;
+    
+    /** Entitys current speed. */
     private float currentSpeed;
+    
+    /** Entitys current rotation speed. */
     private float rotationSpeed;
+    
+    /** Scaling factor of the entity. */
     private Point2D scale;
     
     public AsteroidEntity(URL imagePath) throws IOException {

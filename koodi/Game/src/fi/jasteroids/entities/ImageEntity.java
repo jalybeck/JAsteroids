@@ -22,14 +22,23 @@ import java.nio.ByteBuffer;
  * @see         Entity
  */
 public class ImageEntity implements Entity {
+    /** Name of the entity. */
     private String name;
+    /** Is entity active. */
     private boolean active;
+    /** IS entity visible. */
     private boolean visible;
+    /** Image which will be drawn. */
     private Image img;
+    /** Scaling factor of this entity. */
     private Point2D scale;
+    /** Posiotion of this entity. */
     private Point2D position;
+    /** X texture coordinate offset. */
     private Point2D txOffset;
+    /** X texture coordinate offset. */
     private Point2D tyOffset;
+    /** ZIndex. Larger the number more top this item will be drawn. */
     private int zIndex;
 
     public ImageEntity(URL imagePath) throws IOException {

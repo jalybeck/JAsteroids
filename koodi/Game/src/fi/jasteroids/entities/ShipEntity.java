@@ -33,14 +33,29 @@ public class ShipEntity extends BoundaryCheckedEntity implements  UserControllab
     private final float maxSpeed = 7f;
     private final float turningSpeed = 4.0f;
     
+    /** Name of the entity. */
     private String name;
+    
+    /** Is entity active. */
     private boolean active;
+    
+    /** IS entity visible. */
     private boolean visible;
+    
+    /** Visible shape of the entity. */
     private Quad shape;
+    
+    /** Position of the entity. */
     private Point2D position;
+    
+    /** Rotation angle in degrees on xy plane. */
     private float rotation;
-    private Vector2D curSpeed;
+    
+    /** Direction vector of the entity. */
     private Vector2D direction;
+    
+    /** Entitys current speed. */
+    private Vector2D curSpeed;
     
     public ShipEntity(URL imagePath) throws IOException {
         super();

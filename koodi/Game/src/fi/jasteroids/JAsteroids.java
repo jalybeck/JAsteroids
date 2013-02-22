@@ -19,7 +19,13 @@ import java.io.IOException;
  */
 
 public class JAsteroids extends GameLWJGL {
-    private int xRes, yRes, bpp;
+    /** X resolution of the game. */
+    private int xRes;
+    /** Y resolution of the game. */
+    private int yRes;
+    /** Bits per pixel. */
+    private int bpp;
+    /** Is verticl sync enabled? */
     private boolean vSync;
     public JAsteroids(int xRes, int yRes, int bpp, boolean vSync) {
         super();

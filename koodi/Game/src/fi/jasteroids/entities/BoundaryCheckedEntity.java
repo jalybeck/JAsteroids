@@ -25,8 +25,12 @@ import org.lwjgl.opengl.Display;
  * @see         Collidible
  */
 public abstract class BoundaryCheckedEntity implements Entity, Collidible {
+    /** Color of the rectangle. */
     private Color rectangleColor;
+    /** Has collision happened? */
     private boolean hasCollision;
+    
+    /** ZIndex. Larger the number more top this item will be drawn. */
     private int zIndex;
     
     public BoundaryCheckedEntity() {

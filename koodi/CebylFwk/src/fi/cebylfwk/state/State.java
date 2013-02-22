@@ -19,11 +19,17 @@ import org.lwjgl.input.Keyboard;
  * @version     %I%, %G%
  */
 public abstract class State implements Renderable, Updateable {
+    /** State name. */
     private String name;
+    /** Has state been finished? */
     protected boolean finished;
+    /** EntityManager which holds all the entities for the state. */
     private EntityManager em;
+    /** Should screen be cleared? */
     private boolean clearScreen;
+    /** Clearing color. */
     private Color clearColor;
+    /** States frames per second, which state is locked to. */
     private int FPS;
 
     private State() {

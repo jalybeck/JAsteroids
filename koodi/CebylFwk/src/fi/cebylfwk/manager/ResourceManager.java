@@ -20,7 +20,14 @@ import java.util.logging.Logger;
  */
 
 public abstract class ResourceManager<T extends Resource> {
+    /**
+     * Hashmap which holds all the resources.
+     */
     private HashMap<Object, T> resourceStore;
+    
+    /**
+     * Java logger interface.
+     */
     private final Logger logger;
 
     protected ResourceManager() {

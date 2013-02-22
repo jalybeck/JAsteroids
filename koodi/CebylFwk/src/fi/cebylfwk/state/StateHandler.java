@@ -16,8 +16,11 @@ import java.util.NoSuchElementException;
  * @version     %I%, %G%
  */
 public class StateHandler {
+    /** LinkedList holds states in order of insertion. */
     private LinkedList<State> states;
+    /** Currently active state. */
     private State currentState;
+    /** Previous state. */
     private State previousState;
     
     public StateHandler() {

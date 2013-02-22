@@ -13,10 +13,15 @@ import fi.cebylfwk.math.Point2D;
  * @version     %I%, %G%
  */
 public class Quad implements Shape2D {
+    /** Image used for quad rendering. */
     private Image img;
+    /** Quads rotation angle in degrees. */
     private float rotationAngle;
+    /** Quads 2D position. */
     private Point2D pos;
+    /** Quads scaling. */
     private Point2D scale;
+    /** Color of the quad. */
     private Color color;
     
     private Rectangle boundingRectangle;

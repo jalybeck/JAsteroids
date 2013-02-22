@@ -12,9 +12,13 @@ import fi.cebylfwk.graphics.Renderer;
  */
 
 public class Rectangle implements BoundingObject<Rectangle> {
+    /** Top and bottom extents of the rectangle. */
     private float top,bottom;
+    /** Right and left extents of the rectangle. */
     private float right,left;
+    /** Rectangles center position on screen. */
     private float xPos, yPos;
+    /** Width and height of the rectangle. */
     private float width, height;
     
     public Rectangle(float xPos, float yPos, float width, float height) {

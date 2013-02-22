@@ -20,7 +20,14 @@ import java.awt.image.BufferedImage;
  * @version     %I%, %G%
  */
 public class GameImage implements Image {
+    /**
+     * Image URL to image path.
+     */
     private URL url;
+    
+    /**
+     * Bufferedimage which holds the image data.
+     */
     private BufferedImage img;
     
     public GameImage(URL fileName) throws IOException {

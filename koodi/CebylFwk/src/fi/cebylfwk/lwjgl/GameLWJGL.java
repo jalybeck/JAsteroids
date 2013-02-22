@@ -16,16 +16,34 @@ import org.lwjgl.opengl.Display;
  * @version     %I%, %G%
  */
 public abstract class GameLWJGL implements Game {
+    /** StateHandler which keeps track of game states. */
     private StateHandler sth;
+    
+    /** Game title which is shown on game window. */
     private String gameTitle;
+    
+    /** Frames per seconds(FPS) to which game is locked to. */
     private int frameRate;
+    
+    /** X resolution. */
     private int resX;
+    
+    /** Y resolution. */
     private int resY;
+    
+    /** Is game running in fullscreen mode? */
     private boolean fullscreen;
+    
+    /** Has game been finished */
     private boolean finished;
     
+    /** Renderer interface which is used for all the drawing. */
     Renderer renderer;
+    
+    /** Time in nanoseconds. */
     private long time;
+    
+    /** Time of lastframe in nanoseconds. */
     private long lastFrameTime;
 
     public GameLWJGL() {

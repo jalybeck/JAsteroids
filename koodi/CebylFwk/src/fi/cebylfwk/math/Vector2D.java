@@ -9,7 +9,10 @@ package fi.cebylfwk.math;
  * @version     %I%, %G%
  */
 public class Vector2D {
-    private double x,y;
+    /** X vector component. */
+    private double x;
+    /** Y vector component. */
+    private double y;
     
     public Vector2D() {
         x = 0;

@@ -21,18 +21,40 @@ import java.net.URL;
  * @see         BoundaryCheckedEntity
  */
 public class ShotEntity extends BoundaryCheckedEntity {
+    /** Base shot speed. */
     private final float baseShotSpeed = 4f;
+    
+    /** Shot start position offset. */
     private final float shotStartPositionOffset = 40f;
+    
+    /** Shot alive time in seconds. */
     private final float shotAliveTimeInSeconds = 2.0f;
     
+    /** Name of the entity. */
     private String name;
+    
+    /** Is entity active. */
     private boolean active;
+    
+    /** IS entity visible. */
     private boolean visible;
+    
+    /** Visible shape of the entity. */
     private Quad shape;
+    
+    /** Position of the entity. */
     private Point2D position;
+    
+    /** Rotation angle in degrees on xy plane. */
     private float rotation;
+    
+    /** Direction vector of the entity. */
     private Vector2D direction;
+    
+    /** Current shot speed. */
     private float currentShotSpeed;
+
+    /** Cumulative delta in nanoseconds used for shot delay. */
     private long cumulativeDelta;
     
     public ShotEntity(URL imagePath) throws IOException {

@@ -21,7 +21,14 @@ import java.util.List;
  * @version     %I%, %G%
  */
 public class EntityManager extends ResourceManager<Entity> implements Renderable, Updateable {
+    /**
+     * Entities which should be removed after each frame.
+     */
     private Collection<Entity> removableElements;
+    
+    /**
+     * Colliding entities are hold here.
+     */
     private List<Collidible> collidibles;
     
     public EntityManager() {

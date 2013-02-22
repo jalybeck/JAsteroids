@@ -21,6 +21,10 @@ import org.lwjgl.opengl.GL12;
  * @version     %I%, %G%
  */
 public class RendererLWJGL implements Renderer {
+    
+    /** Cache for the textures.
+     *  So the textures wont be binded and loaded more than needed.
+     */
     private HashMap<Image,Integer> textureCache;
     
     public RendererLWJGL() {

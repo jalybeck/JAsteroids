@@ -6,32 +6,50 @@ package fi.cebylfwk.graphics;
  * @version     %I%, %G%
  */
 public class Color {
-    private float r,g,b,a;
+    /**
+     * Red color component.
+     */
+    private float red;
+    
+    /**
+     * Green color component.
+     */
+    private float green;
+    
+    /**
+     * Blue color component.
+     */
+    private float blue;
+    
+    /**
+     * Color alpha component.
+     */
+    private float alpha;
     
     public Color(float r,float g, float b, float a) {
-        setRGBA(r,g,b,a);
+        setRGBA(red,green,blue,alpha);
     }
     
     public void setRGBA(float r, float g, float b, float a) {
-        this.r = r;
-        this.g = g;
-        this.b = b;
-        this.a = a;
+        this.red = r;
+        this.green = g;
+        this.blue = b;
+        this.alpha = a;
     }
 
     public float getRed() {
-        return r;
+        return red;
     }
 
     public float getGreen() {
-        return g;
+        return green;
     }
 
     public float getBlue() {
-        return b;
+        return blue;
     }
 
     public float getAlpha() {
-        return a;
+        return alpha;
     }
 }
